@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Bocha 💈</title>
   <style>
     body{
@@ -10,53 +10,59 @@
       font-family:Arial,sans-serif;
       background:linear-gradient(135deg,#050505,#151515);
       color:white;
+      min-height:100vh;
       display:flex;
       justify-content:center;
       align-items:center;
-      min-height:100vh;
+      padding:20px;
     }
     .card{
-      width:90%;
-      max-width:430px;
+      width:100%;
+      max-width:460px;
       background:#111;
+      border:1px solid #2d2d2d;
       border-radius:22px;
       padding:28px;
       box-shadow:0 0 30px rgba(0,0,0,.5);
-      border:1px solid #2d2d2d;
       text-align:center;
     }
-    .logo{
-      font-size:42px;
-      margin-bottom:8px;
-    }
-    h1{
-      margin:0;
-      letter-spacing:2px;
-    }
-    .sub{
-      color:#bbb;
-      margin-bottom:20px;
-    }
-    .box{
-      background:#1b1b1b;
-      padding:12px;
+    .logo{font-size:42px;margin-bottom:8px}
+    h1{margin:0;letter-spacing:2px}
+    .sub{color:#bbb;margin:8px 0 20px}
+    .box,.input,select,button{
+      width:100%;
+      box-sizing:border-box;
       border-radius:12px;
+      border:none;
       margin-bottom:12px;
+      padding:14px;
+      font-size:15px;
     }
-    a.btn{
-      display:block;
-      text-decoration:none;
+    .box{background:#1b1b1b}
+    .input,select{background:#222;color:white}
+    button{
       background:#d4af37;
       color:black;
-      padding:15px;
-      border-radius:12px;
       font-weight:bold;
-      margin-top:14px;
+      cursor:pointer;
     }
-    .price{
-      color:#d4af37;
-      font-weight:bold;
+    .slots{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:8px;
+      margin-bottom:12px;
     }
+    .slot{
+      background:#222;
+      padding:10px;
+      border-radius:10px;
+      cursor:pointer;
+      border:1px solid #333;
+      font-size:14px;
+    }
+    .slot.active{background:#d4af37;color:black;font-weight:bold}
+    .slot.busy{background:#4a1616;color:#ffb3b3;cursor:not-allowed}
+    .small{font-size:13px;color:#bbb}
   </style>
 </head>
 <body>
@@ -68,30 +74,125 @@
     <div class="box">📍 Barrio Virgen del Carmen</div>
     <div class="box">📸 @The.bocha</div>
 
-    <div class="box">
-      💈 Corte <span class="price">$10.000</span><br>
-      🧔 Barba <span class="price">$2.000</span><br>
-      🔥 Combo <span class="price">$12.000</span>
-    </div>
+    <input id="name" class="input" placeholder="Tu nombre" />
 
-    <a class="btn" href="https://wa.me/5493835692337">
-      Reservar Turno 🔥
-    </a>
+    <select id="service">
+      <option value="Corte">💈 Corte - $10.000</option>
+      <option value="Barba">🧔 Barba - $2.000</option>
+      <option value="Combo">🔥 Combo - $12.000</option>
+    </select>
+
+    <select id="day">
+      <option>Lunes</option>
+      <option>Martes</option>
+      <option>Miércoles</option>
+      <option>Jueves</option>
+      <option>Viernes</option>
+      <option>Sábado</option>
+    </select>
+
+    <div class="small">Elegí horario</div>
+    <div id="slots" class="slots"></div>
+
+    <button id="btn">Reservar Turno 🔥</button>
   </div>
+
   <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      getDocs,
+      addDoc
+    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: AIza...
-    authDomain: "the-bocha.firebaseapp.com",
-    projectId: "the-bocha",
-    storageBucket: "the-bocha.firebasestorage.app",
-    messagingSenderId: "284110596241",
-    appId: "1:284110596241:web:f39e4c03f3c3eabb1cb730"
-  };
+    const firebaseConfig = {
+      apiKey: "AIzaSyBzBRXDzCmNkEPxAmsPGMBgbKVipSOIkaE",
+      authDomain: "the-bocha.firebaseapp.com",
+      projectId: "the-bocha",
+      storageBucket: "the-bocha.firebasestorage.app",
+      messagingSenderId: "284110596241",
+      appId: "1:284110596241:web:f39e4c03f3c3eabb1cb730"
+    };
 
-  const app = initializeApp(firebaseConfig);
-  console.log("Firebase conectado 🔥");
-</script>
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const horarios = [
+      "09:30","10:30","11:30","12:30",
+      "15:30","16:30","17:30","18:30",
+      "19:30","20:30","21:30","22:30"
+    ];
+
+    const slots = document.getElementById("slots");
+    const dayEl = document.getElementById("day");
+    let selected = null;
+    let ocupados = [];
+
+    async function cargar() {
+      selected = null;
+      const dia = dayEl.value;
+      const docs = await getDocs(collection(db, "turnos"));
+      ocupados = docs.docs
+        .map(d => d.data())
+        .filter(t => t.day === dia)
+        .map(t => t.time);
+
+      slots.innerHTML = "";
+      horarios.forEach(h => {
+        const div = document.createElement("div");
+        div.className = "slot";
+        div.textContent = h;
+
+        if (ocupados.includes(h)) {
+          div.classList.add("busy");
+          div.textContent = h + " ❌";
+        } else {
+          div.onclick = () => {
+            document.querySelectorAll(".slot").forEach(x => x.classList.remove("active"));
+            div.classList.add("active");
+            selected = h;
+          };
+        }
+
+        slots.appendChild(div);
+      });
+    }
+
+    dayEl.onchange = cargar;
+
+    document.getElementById("btn").onclick = async () => {
+      const name = document.getElementById("name").value.trim();
+      const service = document.getElementById("service").value;
+      const day = dayEl.value;
+
+      if (!name) return alert("Poné tu nombre");
+      if (!selected) return alert("Elegí horario");
+
+      await addDoc(collection(db, "turnos"), {
+        name,
+        service,
+        day,
+        time: selected,
+        createdAt: Date.now()
+      });
+
+      const msg =
+        "Hola The Bocha 💈, soy " + name +
+        ". Reservé " + service +
+        " para " + day +
+        " a las " + selected;
+
+      window.open(
+        "https://wa.me/5493835692337?text=" + encodeURIComponent(msg),
+        "_blank"
+      );
+
+      alert("Turno reservado 🔥");
+      cargar();
+    };
+
+    cargar();
+  </script>
 </body>
 </html>
