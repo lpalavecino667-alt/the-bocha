@@ -6,42 +6,63 @@
   <title>The Bocha 💈</title>
   <style>
     body{
-      margin:0;font-family:Arial,sans-serif;
+      margin:0;
+      font-family:Arial,sans-serif;
       background:linear-gradient(135deg,#050505,#151515);
-      color:#fff;min-height:100vh;display:flex;
-      justify-content:center;align-items:center;padding:20px;
+      color:white;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
     }
     .card{
-      width:100%;max-width:460px;background:#111;
-      border:1px solid #2d2d2d;border-radius:22px;
-      padding:28px;box-shadow:0 0 30px rgba(0,0,0,.5);
+      width:100%;
+      max-width:460px;
+      background:#111;
+      border:1px solid #2d2d2d;
+      border-radius:22px;
+      padding:28px;
+      box-shadow:0 0 30px rgba(0,0,0,.5);
       text-align:center;
     }
     .logo{font-size:42px;margin-bottom:8px}
     h1{margin:0;letter-spacing:2px}
     .sub{color:#bbb;margin:8px 0 20px}
     .box,.input,select,button{
-      width:100%;box-sizing:border-box;border-radius:12px;
-      border:none;margin-bottom:12px;padding:14px;font-size:15px;
+      width:100%;
+      box-sizing:border-box;
+      border-radius:12px;
+      border:none;
+      margin-bottom:12px;
+      padding:14px;
+      font-size:15px;
     }
     .box{background:#1b1b1b}
-    .input,select{
-  background:#222;
-  color:white;
-  border:1px solid #444;
-}
-    input[type="date"]{
-  color:white;
+    .input,select{background:#222;color:white}
+    button{
+      background:#d4af37;
+      color:black;
+      font-weight:bold;
+      cursor:pointer;
     }
-    button{background:#d4af37;color:black;font-weight:bold;cursor:pointer}
-    .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+    .slots{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:8px;
+      margin-bottom:12px;
+    }
     .slot{
-      background:#222;padding:10px;border-radius:10px;cursor:pointer;
-      border:1px solid #333;font-size:14px
+      background:#222;
+      padding:10px;
+      border-radius:10px;
+      cursor:pointer;
+      border:1px solid #333;
+      font-size:14px;
     }
     .slot.active{background:#d4af37;color:black;font-weight:bold}
     .slot.busy{background:#4a1616;color:#ffb3b3;cursor:not-allowed}
-    .small{font-size:13px;color:#bbb;margin-bottom:8px}
+    .small{font-size:13px;color:#bbb}
   </style>
 </head>
 <body>
@@ -61,7 +82,14 @@
       <option value="Combo">🔥 Combo - $12.000</option>
     </select>
 
-    <input id="date" class="input" type="date" />
+    <select id="day">
+      <option>Lunes</option>
+      <option>Martes</option>
+      <option>Miércoles</option>
+      <option>Jueves</option>
+      <option>Viernes</option>
+      <option>Sábado</option>
+    </select>
 
     <div class="small">Elegí horario</div>
     <div id="slots" class="slots"></div>
@@ -72,7 +100,10 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
     import {
-      getFirestore, collection, getDocs, addDoc
+      getFirestore,
+      collection,
+      getDocs,
+      addDoc
     } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
     const firebaseConfig = {
@@ -87,69 +118,33 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    const horariosBase = [
+    const horarios = [
       "09:30","10:30","11:30","12:30",
       "15:30","16:30","17:30","18:30",
       "19:30","20:30","21:30","22:30"
     ];
 
-    const dateEl = document.getElementById("date");
     const slots = document.getElementById("slots");
+    const dayEl = document.getElementById("day");
     let selected = null;
+    let ocupados = [];
 
-    const hoy = new Date();
-    const max = new Date();
-    max.setDate(hoy.getDate() + 15);
-
-    const iso = d => new Date(d.getTime() - d.getTimezoneOffset()*60000).toISOString().split("T")[0];
-    dateEl.min = iso(hoy);
-    dateEl.max = iso(max);
-    dateEl.value = iso(hoy);
-
-    function esDomingo(fecha){
-      return new Date(fecha + "T12:00:00").getDay() === 0;
-    }
-
-    function horariosDisponibles(fecha){
-      let lista = [...horariosBase];
-      const hoyIso = iso(new Date());
-
-      if(fecha === hoyIso){
-        const ahora = new Date();
-        lista = lista.filter(h => {
-          const [hh, mm] = h.split(":").map(Number);
-          const turno = new Date();
-          turno.setHours(hh, mm, 0, 0);
-          return turno > ahora;
-        });
-      }
-
-      return lista;
-    }
-
-    async function cargar(){
+    async function cargar() {
       selected = null;
-      const fecha = dateEl.value;
-
-      if(esDomingo(fecha)){
-        slots.innerHTML = "<div class='small'>Domingo cerrado ❌</div>";
-        return;
-      }
-
+      const dia = dayEl.value;
       const docs = await getDocs(collection(db, "turnos"));
-      const ocupados = docs.docs
+      ocupados = docs.docs
         .map(d => d.data())
-        .filter(t => t.date === fecha)
+        .filter(t => t.day === dia)
         .map(t => t.time);
 
       slots.innerHTML = "";
-
-      horariosDisponibles(fecha).forEach(h => {
+      horarios.forEach(h => {
         const div = document.createElement("div");
         div.className = "slot";
         div.textContent = h;
 
-        if(ocupados.includes(h)){
+        if (ocupados.includes(h)) {
           div.classList.add("busy");
           div.textContent = h + " ❌";
         } else {
@@ -164,21 +159,40 @@
       });
     }
 
-    dateEl.onchange = cargar;
+    dayEl.onchange = cargar;
 
     document.getElementById("btn").onclick = async () => {
       const name = document.getElementById("name").value.trim();
       const service = document.getElementById("service").value;
-      const date = dateEl.value;
+      const day = dayEl.value;
 
-      if(!name) return alert("Poné tu nombre");
-      if(esDomingo(date)) return alert("Domingo cerrado");
-      if(!selected) return alert("Elegí horario");
+      if (!name) return alert("Poné tu nombre");
+      if (!selected) return alert("Elegí horario");
 
       await addDoc(collection(db, "turnos"), {
-        name, service, date, time: selected, createdAt: Date.now()
+        name,
+        service,
+        day,
+        time: selected,
+        createdAt: Date.now()
       });
 
       const msg =
         "Hola The Bocha 💈, soy " + name +
-        ". Reservé " + service
+        ". Reservé " + service +
+        " para " + day +
+        " a las " + selected;
+
+      window.open(
+        "https://wa.me/5493835692337?text=" + encodeURIComponent(msg),
+        "_blank"
+      );
+
+      alert("Turno reservado 🔥");
+      cargar();
+    };
+
+    cargar();
+  </script>
+</body>
+</html>
