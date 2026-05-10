@@ -1,80 +1,191 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Bocha 💈</title>
-  <style>
-    body{
-      margin:0;
-      font-family:Arial,sans-serif;
-      background:linear-gradient(135deg,#050505,#151515);
-      color:white;
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:20px;
-    }
-    .card{
-      width:100%;
-      max-width:460px;
-      background:#111;
-      border:1px solid #2d2d2d;
-      border-radius:22px;
-      padding:28px;
-      box-shadow:0 0 30px rgba(0,0,0,.5);
-      text-align:center;
-    }
-    .logo{font-size:42px;margin-bottom:8px}
-    h1{margin:0;letter-spacing:2px}
-    .sub{color:#bbb;margin:8px 0 20px}
-    .box,.input,select,button{
-      width:100%;
-      box-sizing:border-box;
-      border-radius:12px;
-      border:none;
-      margin-bottom:12px;
-      padding:14px;
-      font-size:15px;
-    }
-    .box{background:#1b1b1b}
-    .input,select{background:#222;color:white}
-    button{
-      background:#d4af37;
-      color:black;
-      font-weight:bold;
-      cursor:pointer;
-    }
-    .slots{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:8px;
-      margin-bottom:12px;
-    }
-    .slot{
-      background:#222;
-      padding:10px;
-      border-radius:10px;
-      cursor:pointer;
-      border:1px solid #333;
-      font-size:14px;
-    }
-    .slot.active{background:#d4af37;color:black;font-weight:bold}
-    .slot.busy{background:#4a1616;color:#ffb3b3;cursor:not-allowed}
-    .small{font-size:13px;color:#bbb}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio The Bocha</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#050505;
+  color:#fff;
+}
+.hero{
+  min-height:55vh;
+  padding:40px 22px;
+  background:
+    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.9)),
+    radial-gradient(circle at top right,#5a4300 0%,transparent 30%),
+    radial-gradient(circle at left,#222 0%,transparent 35%),
+    #050505;
+  display:flex;
+  align-items:flex-end;
+}
+.hero-box{max-width:600px}
+.kicker{
+  color:#d4af37;
+  letter-spacing:3px;
+  font-size:12px;
+  text-transform:uppercase;
+}
+h1{
+  margin:10px 0;
+  font-size:42px;
+  line-height:1;
+}
+.hero p{
+  color:#ddd;
+  margin-bottom:20px;
+}
+.btn{
+  display:inline-block;
+  text-decoration:none;
+  background:#d4af37;
+  color:#000;
+  font-weight:bold;
+  padding:14px 22px;
+  border-radius:12px;
+}
+.wrap{
+  width:100%;
+  max-width:900px;
+  margin:auto;
+  padding:24px 18px 60px;
+}
+.card{
+  background:#101010;
+  border:1px solid #242424;
+  border-radius:22px;
+  padding:20px;
+  margin-bottom:18px;
+}
+.title{
+  margin:0 0 14px;
+  color:#d4af37;
+}
+.grid{
+  display:grid;
+  gap:12px;
+  grid-template-columns:1fr 1fr;
+}
+.box{
+  background:#181818;
+  border-radius:14px;
+  padding:16px;
+}
+details{
+  background:#181818;
+  border-radius:16px;
+  padding:16px;
+}
+summary{
+  cursor:pointer;
+  font-weight:bold;
+  color:#d4af37;
+}
+.input,select,button{
+  width:100%;
+  margin-bottom:12px;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  font-size:15px;
+}
+.input,select{
+  background:#1c1c1c;
+  color:#fff;
+}
+button{
+  background:#d4af37;
+  color:#000;
+  font-weight:bold;
+}
+.slots{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+.slot{
+  background:#1c1c1c;
+  border:1px solid #333;
+  border-radius:10px;
+  padding:10px;
+  text-align:center;
+  cursor:pointer;
+}
+.slot.active{
+  background:#d4af37;
+  color:#000;
+  font-weight:bold;
+}
+.slot.busy{
+  background:#4a1616;
+  color:#ffb3b3;
+  cursor:not-allowed;
+}
+.gallery{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;
+}
+.pic{
+  height:110px;
+  border-radius:14px;
+  background:
+    linear-gradient(135deg,#2a2a2a,#101010);
+  border:1px solid #2d2d2d;
+}
+.small{color:#bbb;font-size:14px}
+a.link{
+  color:#d4af37;
+  text-decoration:none;
+}
+</style>
 </head>
 <body>
+
+<section class="hero">
+  <div class="hero-box">
+    <div class="kicker">Premium Barber Studio</div>
+    <h1>Studio<br>The Bocha</h1>
+    <p>Estilo, presencia y detalle. Reservá tu turno y viví la experiencia.</p>
+    <a class="btn" href="#agenda">Reservar Turno 🔥</a>
+  </div>
+</section>
+
+<div class="wrap">
+
   <div class="card">
-    <div class="logo">👽💈</div>
-    <h1>THE BOCHA</h1>
-    <p class="sub">Barber Street</p>
+    <h3 class="title">Información</h3>
+    <div class="grid">
+      <div class="box">📍 Barrio Virgen del Carmen</div>
+      <div class="box">📸 @The.bocha</div>
+      <div class="box">💈 Corte $10.000</div>
+      <div class="box">🔥 Combo $12.000</div>
+    </div>
+  </div>
 
-    <div class="box">📍 Barrio Virgen del Carmen</div>
-    <div class="box">📸 @The.bocha</div>
+  <details class="card">
+    <summary>🎁 Cliente fiel, acumula y gana</summary>
+    <p>✅ 5 cortes = <b>Barba gratis</b></p>
+    <p>✅ 10 cortes = <b>1 corte gratis</b></p>
+  </details>
 
-    <input id="name" class="input" placeholder="Tu nombre" />
+  <div class="card">
+    <h3 class="title">Estilos</h3>
+    <div class="gallery">
+      <div class="pic"></div>
+      <div class="pic"></div>
+      <div class="pic"></div>
+    </div>
+  </div>
+
+  <div class="card" id="agenda">
+    <h3 class="title">Reservá tu turno</h3>
+
+    <input id="name" class="input" placeholder="Tu nombre">
 
     <select id="service">
       <option value="Corte">💈 Corte - $10.000</option>
@@ -94,105 +205,95 @@
     <div class="small">Elegí horario</div>
     <div id="slots" class="slots"></div>
 
-    <button id="btn">Reservar Turno 🔥</button>
+    <button id="btn">Confirmar Reserva</button>
   </div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-    import {
-      getFirestore,
-      collection,
-      getDocs,
-      addDoc
-    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+  <div class="card">
+    <a class="link" href="https://wa.me/5493835692337">Hablar por WhatsApp →</a>
+  </div>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyBzBRXDzCmNkEPxAmsPGMBgbKVipSOIkaE",
-      authDomain: "the-bocha.firebaseapp.com",
-      projectId: "the-bocha",
-      storageBucket: "the-bocha.firebasestorage.app",
-      messagingSenderId: "284110596241",
-      appId: "1:284110596241:web:f39e4c03f3c3eabb1cb730"
-    };
+</div>
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-    const horarios = [
-      "09:30","10:30","11:30","12:30",
-      "15:30","16:30","17:30","18:30",
-      "19:30","20:30","21:30","22:30"
-    ];
+const firebaseConfig = {
+  apiKey: "AIzaSyBzBRXDzCmNkEPxAmsPGMBgbKVipSOIkaE",
+  authDomain: "the-bocha.firebaseapp.com",
+  projectId: "the-bocha",
+  storageBucket: "the-bocha.firebasestorage.app",
+  messagingSenderId: "284110596241",
+  appId: "1:284110596241:web:f39e4c03f3c3eabb1cb730"
+};
 
-    const slots = document.getElementById("slots");
-    const dayEl = document.getElementById("day");
-    let selected = null;
-    let ocupados = [];
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-    async function cargar() {
-      selected = null;
-      const dia = dayEl.value;
-      const docs = await getDocs(collection(db, "turnos"));
-      ocupados = docs.docs
-        .map(d => d.data())
-        .filter(t => t.day === dia)
-        .map(t => t.time);
+const horarios = [
+ "09:30","10:30","11:30","12:30",
+ "15:30","16:30","17:30","18:30",
+ "19:30","20:30","21:30","22:30"
+];
 
-      slots.innerHTML = "";
-      horarios.forEach(h => {
-        const div = document.createElement("div");
-        div.className = "slot";
-        div.textContent = h;
+const slots = document.getElementById("slots");
+const dayEl = document.getElementById("day");
+let selected = null;
 
-        if (ocupados.includes(h)) {
-          div.classList.add("busy");
-          div.textContent = h + " ❌";
-        } else {
-          div.onclick = () => {
-            document.querySelectorAll(".slot").forEach(x => x.classList.remove("active"));
-            div.classList.add("active");
-            selected = h;
-          };
-        }
+async function cargar(){
+  selected = null;
+  const dia = dayEl.value;
+  const docs = await getDocs(collection(db,"turnos"));
+  const ocupados = docs.docs.map(d=>d.data()).filter(t=>t.day===dia).map(t=>t.time);
 
-        slots.appendChild(div);
-      });
+  slots.innerHTML = "";
+  horarios.forEach(h=>{
+    const div = document.createElement("div");
+    div.className = "slot";
+    div.textContent = h;
+
+    if(ocupados.includes(h)){
+      div.classList.add("busy");
+      div.textContent = h + " ❌";
+    }else{
+      div.onclick = ()=>{
+        document.querySelectorAll(".slot").forEach(x=>x.classList.remove("active"));
+        div.classList.add("active");
+        selected = h;
+      };
     }
+    slots.appendChild(div);
+  });
+}
 
-    dayEl.onchange = cargar;
+dayEl.onchange = cargar;
 
-    document.getElementById("btn").onclick = async () => {
-      const name = document.getElementById("name").value.trim();
-      const service = document.getElementById("service").value;
-      const day = dayEl.value;
+document.getElementById("btn").onclick = async ()=>{
+  const name = document.getElementById("name").value.trim();
+  const service = document.getElementById("service").value;
+  const day = dayEl.value;
 
-      if (!name) return alert("Poné tu nombre");
-      if (!selected) return alert("Elegí horario");
+  if(!name) return alert("Poné tu nombre");
+  if(!selected) return alert("Elegí horario");
 
-      await addDoc(collection(db, "turnos"), {
-        name,
-        service,
-        day,
-        time: selected,
-        createdAt: Date.now()
-      });
+  await addDoc(collection(db,"turnos"),{
+    name, service, day, time:selected, createdAt:Date.now()
+  });
 
-      const msg =
-        "Hola The Bocha 💈, soy " + name +
-        ". Reservé " + service +
-        " para " + day +
-        " a las " + selected;
+  const msg = "Hola The Bocha 💈, soy " + name + ". Reservé " + service + " para " + day + " a las " + selected;
+  window.open("https://wa.me/5493835692337?text=" + encodeURIComponent(msg), "_blank");
 
-      window.open(
-        "https://wa.me/5493835692337?text=" + encodeURIComponent(msg),
-        "_blank"
-      );
+  alert("Turno reservado 🔥");
+  cargar();
+};
 
-      alert("Turno reservado 🔥");
-      cargar();
-    };
+cargar();
+</script>
 
-    cargar();
-  </script>
 </body>
 </html>
