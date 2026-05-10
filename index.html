@@ -3,77 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Studio The Bocha</title>
+<title>Studio the bocha</title>
 <style>
 *{box-sizing:border-box}
 body{
-  margin:0;
+  margin:0;background:#050505;color:#fff;
   font-family:Arial,sans-serif;
-  background:#050505;
-  color:#fff;
 }
+.wrap{max-width:1100px;margin:auto;padding:20px}
 .hero{
-  min-height:55vh;
-  padding:40px 22px;
-  background:
-    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.9)),
-    radial-gradient(circle at top right,#5a4300 0%,transparent 30%),
-    radial-gradient(circle at left,#222 0%,transparent 35%),
-    #050505;
-  display:flex;
-  align-items:flex-end;
-}
-.hero-box{max-width:600px}
-.kicker{
-  color:#d4af37;
-  letter-spacing:3px;
-  font-size:12px;
-  text-transform:uppercase;
-}
-h1{
-  margin:10px 0;
-  font-size:42px;
-  line-height:1;
-}
-.hero p{
-  color:#ddd;
+  display:grid;
+  grid-template-columns:1.4fr .8fr;
+  gap:18px;
   margin-bottom:20px;
 }
-.btn{
-  display:inline-block;
-  text-decoration:none;
-  background:#d4af37;
-  color:#000;
-  font-weight:bold;
-  padding:14px 22px;
-  border-radius:12px;
-}
-.wrap{
-  width:100%;
-  max-width:900px;
-  margin:auto;
-  padding:24px 18px 60px;
-}
 .card{
-  background:#101010;
-  border:1px solid #242424;
-  border-radius:22px;
-  padding:20px;
-  margin-bottom:18px;
+  background:#0e0e0e;
+  border:1px solid #232323;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 0 30px rgba(0,0,0,.35);
 }
-.title{
-  margin:0 0 14px;
-  color:#d4af37;
+.cover{
+  min-height:560px;
+  background:
+   linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.9)),
+   url('https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=1200&auto=format&fit=crop') center/cover;
+  display:flex;
+  align-items:end;
+  padding:28px;
+}
+.kicker{color:#d4af37;letter-spacing:3px;font-size:12px}
+h1{font-size:54px;margin:8px 0}
+.sub{color:#ddd;max-width:420px}
+.btn{
+  display:inline-block;text-decoration:none;
+  background:#d4af37;color:#000;
+  padding:14px 24px;border-radius:12px;
+  font-weight:bold;margin-top:10px;
+}
+.side{padding:18px}
+.side-title{color:#d4af37;margin:0 0 12px}
+.hour{
+  background:#181818;padding:14px;border-radius:14px;
+  margin-bottom:10px;text-align:center;
 }
 .grid{
   display:grid;
-  gap:12px;
   grid-template-columns:1fr 1fr;
+  gap:18px;
 }
-.box{
-  background:#181818;
-  border-radius:14px;
-  padding:16px;
+.section{padding:18px}
+.tabs{
+  display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;
+}
+.tab{
+  background:#181818;padding:10px 14px;
+  border-radius:999px;color:#d4af37;
+}
+.gallery{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;
+}
+.pic{
+  height:160px;border-radius:16px;
+  background-size:cover;background-position:center;
+}
+.info-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.info{
+  background:#181818;padding:18px;
+  border-radius:16px;
 }
 details{
   background:#181818;
@@ -82,108 +86,99 @@ details{
 }
 summary{
   cursor:pointer;
-  font-weight:bold;
   color:#d4af37;
+  font-weight:bold;
 }
 .input,select,button{
-  width:100%;
-  margin-bottom:12px;
-  padding:14px;
-  border:none;
-  border-radius:12px;
+  width:100%;padding:14px;border:none;
+  border-radius:12px;margin-bottom:12px;
   font-size:15px;
 }
-.input,select{
-  background:#1c1c1c;
-  color:#fff;
-}
-button{
-  background:#d4af37;
-  color:#000;
-  font-weight:bold;
-}
+.input,select{background:#181818;color:#fff}
+button{background:#d4af37;color:#000;font-weight:bold}
 .slots{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:8px;
 }
 .slot{
-  background:#1c1c1c;
-  border:1px solid #333;
-  border-radius:10px;
-  padding:10px;
-  text-align:center;
+  background:#181818;border:1px solid #333;
+  border-radius:10px;padding:10px;text-align:center;
   cursor:pointer;
 }
-.slot.active{
-  background:#d4af37;
-  color:#000;
-  font-weight:bold;
+.slot.active{background:#d4af37;color:#000;font-weight:bold}
+.slot.busy{background:#4a1616;color:#ffb3b3;cursor:not-allowed}
+.foot{
+  text-align:center;color:#777;padding:24px 0 50px;
 }
-.slot.busy{
-  background:#4a1616;
-  color:#ffb3b3;
-  cursor:not-allowed;
-}
-.gallery{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:10px;
-}
-.pic{
-  height:110px;
-  border-radius:14px;
-  background:
-    linear-gradient(135deg,#2a2a2a,#101010);
-  border:1px solid #2d2d2d;
-}
-.small{color:#bbb;font-size:14px}
-a.link{
-  color:#d4af37;
-  text-decoration:none;
+@media(max-width:900px){
+  .hero,.grid,.info-grid{grid-template-columns:1fr}
+  h1{font-size:42px}
 }
 </style>
 </head>
 <body>
 
-<section class="hero">
-  <div class="hero-box">
-    <div class="kicker">Premium Barber Studio</div>
-    <h1>Studio<br>The Bocha</h1>
-    <p>Estilo, presencia y detalle. Reservá tu turno y viví la experiencia.</p>
-    <a class="btn" href="#agenda">Reservar Turno 🔥</a>
-  </div>
-</section>
-
 <div class="wrap">
 
-  <div class="card">
-    <h3 class="title">Información</h3>
-    <div class="grid">
-      <div class="box">📍 Barrio Virgen del Carmen</div>
-      <div class="box">📸 @The.bocha</div>
-      <div class="box">💈 Corte $10.000</div>
-      <div class="box">🔥 Combo $12.000</div>
+  <section class="hero">
+    <div class="card cover">
+      <div>
+        <div class="kicker">PREMIUM BARBER STUDIO</div>
+        <h1>Studio<br>the bocha</h1>
+        <p class="sub">Experiencia premium. Detalle, presencia y estilo en cada corte.</p>
+        <a href="#agenda" class="btn">Reservar Turno 🔥</a>
+      </div>
     </div>
-  </div>
 
-  <details class="card">
-    <summary>🎁 Cliente fiel, acumula y gana</summary>
-    <p>✅ 5 cortes = <b>Barba gratis</b></p>
-    <p>✅ 10 cortes = <b>1 corte gratis</b></p>
-  </details>
-
-  <div class="card">
-    <h3 class="title">Estilos</h3>
-    <div class="gallery">
-      <div class="pic"></div>
-      <div class="pic"></div>
-      <div class="pic"></div>
+    <div class="card side">
+      <h3 class="side-title">Horarios</h3>
+      <div class="hour">09:30</div>
+      <div class="hour">10:30</div>
+      <div class="hour">11:30</div>
+      <div class="hour">12:30</div>
+      <div class="hour">15:30</div>
+      <div class="hour">16:30</div>
+      <div class="hour">17:30</div>
+      <div class="hour">18:30</div>
+      <div class="hour">19:30</div>
+      <div class="hour">20:30</div>
     </div>
-  </div>
+  </section>
 
-  <div class="card" id="agenda">
-    <h3 class="title">Reservá tu turno</h3>
+  <section class="grid">
+    <div class="card section">
+      <h3 style="color:#d4af37">Estilos</h3>
+      <div class="tabs">
+        <div class="tab">Fade</div>
+        <div class="tab">Crop</div>
+        <div class="tab">Classic</div>
+      </div>
+      <div class="gallery">
+        <div class="pic" style="background-image:url('https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=900&auto=format&fit=crop')"></div>
+        <div class="pic" style="background-image:url('https://images.unsplash.com/photo-1503951458645-643d53bfd90f?q=80&w=900&auto=format&fit=crop')"></div>
+        <div class="pic" style="background-image:url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=900&auto=format&fit=crop')"></div>
+      </div>
+    </div>
+
+    <div class="card section">
+      <details open>
+        <summary>🎁 Cliente fiel, acumula y gana</summary>
+        <p>✅ 5 cortes = <b>Barba gratis</b></p>
+        <p>✅ 10 cortes = <b>1 corte gratis</b></p>
+      </details>
+      <div style="height:12px"></div>
+      <div class="info-grid">
+        <div class="info">📸 @The.bocha</div>
+        <div class="info">📍 Virgen del Carmen</div>
+        <div class="info">💈 Corte $10.000</div>
+        <div class="info">🔥 Combo $12.000</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card section" id="agenda" style="margin-top:18px">
+    <h3 style="color:#d4af37">Reservá tu turno</h3>
 
     <input id="name" class="input" placeholder="Tu nombre">
 
@@ -202,26 +197,20 @@ a.link{
       <option>Sábado</option>
     </select>
 
-    <div class="small">Elegí horario</div>
+    <div style="color:#bbb;margin-bottom:10px">Elegí horario</div>
     <div id="slots" class="slots"></div>
 
+    <div style="height:12px"></div>
     <button id="btn">Confirmar Reserva</button>
-  </div>
+  </section>
 
-  <div class="card">
-    <a class="link" href="https://wa.me/5493835692337">Hablar por WhatsApp →</a>
-  </div>
+  <div class="foot">The Bocha • Premium Barber Experience</div>
 
 </div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  addDoc
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBzBRXDzCmNkEPxAmsPGMBgbKVipSOIkaE",
@@ -235,12 +224,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const horarios = [
- "09:30","10:30","11:30","12:30",
- "15:30","16:30","17:30","18:30",
- "19:30","20:30","21:30","22:30"
-];
-
+const horarios = ["09:30","10:30","11:30","12:30","15:30","16:30","17:30","18:30","19:30","20:30","21:30","22:30"];
 const slots = document.getElementById("slots");
 const dayEl = document.getElementById("day");
 let selected = null;
@@ -255,11 +239,9 @@ async function cargar(){
   horarios.forEach(h=>{
     const div = document.createElement("div");
     div.className = "slot";
-    div.textContent = h;
-
+    div.textContent = ocupados.includes(h) ? h + " ❌" : h;
     if(ocupados.includes(h)){
       div.classList.add("busy");
-      div.textContent = h + " ❌";
     }else{
       div.onclick = ()=>{
         document.querySelectorAll(".slot").forEach(x=>x.classList.remove("active"));
@@ -281,9 +263,7 @@ document.getElementById("btn").onclick = async ()=>{
   if(!name) return alert("Poné tu nombre");
   if(!selected) return alert("Elegí horario");
 
-  await addDoc(collection(db,"turnos"),{
-    name, service, day, time:selected, createdAt:Date.now()
-  });
+  await addDoc(collection(db,"turnos"), { name, service, day, time:selected, createdAt:Date.now() });
 
   const msg = "Hola The Bocha 💈, soy " + name + ". Reservé " + service + " para " + day + " a las " + selected;
   window.open("https://wa.me/5493835692337?text=" + encodeURIComponent(msg), "_blank");
