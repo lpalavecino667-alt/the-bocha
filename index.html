@@ -357,11 +357,80 @@ select{
     grid-template-columns:1fr;
   }
 }
+
+
+.video-bg{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.12;
+  z-index:-2;
+  filter:blur(2px) brightness(.45);
+}
+
+.fade-up{
+  animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.glow{
+  box-shadow:0 0 30px rgba(212,175,55,.22);
+}
+
+.menu-panel{
+  position:fixed;
+  left:-260px;
+  top:0;
+  width:240px;
+  height:100vh;
+  background:#0b0b0b;
+  border-right:1px solid rgba(212,175,55,.15);
+  z-index:9999;
+  padding:30px 20px;
+  transition:.35s;
+}
+
+.menu-panel.open{
+  left:0;
+}
+
+.menu-panel a{
+  display:block;
+  color:#fff;
+  text-decoration:none;
+  margin-bottom:18px;
+  font-size:18px;
+}
+
+.menu-panel a:hover{
+  color:#d4af37;
+}
+
 </style></head>
-<body><div class="topbar">
-  <div class="menu">☰</div>
+<body><video autoplay muted loop playsinline class="video-bg">
+  <source src="https://cdn.coverr.co/videos/coverr-man-getting-a-haircut-1562848855330?download=1080p" type="video/mp4">
+</video><div class="menu-panel" id="menuPanel">
+  <a href="#">Inicio</a>
+  <a href="#agenda">Reservar</a>
+  <a href="https://instagram.com/The.bocha">Instagram</a>
+  <a href="https://wa.me/5493835692337">WhatsApp</a>
+</div><div class="topbar">
+  <div class="menu" onclick="toggleMenu()">☰</div>
   <div class="brand">STUDIO THE BOCHA</div>
-</div><div class="wrap"><section class="hero"><div class="card cover">
+</div><div class="wrap"><section class="hero fade-up"><div class="card cover">
   <div class="hero-content">
     <img class="logo" src="./logo.png"><div class="kicker">PREMIUM BARBER STUDIO</div>
 
@@ -521,5 +590,9 @@ cargar();
 };
 
 cargar();
+
+function toggleMenu(){
+  document.getElementById('menuPanel').classList.toggle('open');
+}
 </script></body>
-  </html>
+</html>
