@@ -117,6 +117,12 @@ button:hover{
   gap:10px;
 }
 .pic{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:16px;
+  border:1px solid #2d2d2d;
+}
   height:160px;border-radius:16px;
   background-size:cover;background-position:center;
 }
@@ -164,6 +170,26 @@ button{background:#d4af37;color:#000;font-weight:bold}
 @media(max-width:900px){
   .hero,.grid,.info-grid{grid-template-columns:1fr}
   h1{font-size:42px}
+}.logo{
+  width:220px;
+  display:block;
+  margin-bottom:20px;
+  animation:float 4s ease-in-out infinite;
+  filter:drop-shadow(0 0 20px rgba(212,175,55,.35));
+}
+
+@keyframes float{
+  0%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-8px);
+  }
+
+  100%{
+    transform:translateY(0);
+  }
 }
 </style>
 </head>
@@ -173,6 +199,7 @@ button{background:#d4af37;color:#000;font-weight:bold}
 
   <section class="hero">
     <div class="card cover">
+      <img class="logo" src="./logo.png">
       <div>
         <div class="kicker">PREMIUM BARBER STUDIO</div>
         <h1>Studio<br>the bocha</h1>
@@ -205,9 +232,9 @@ button{background:#d4af37;color:#000;font-weight:bold}
         <div class="tab">Classic</div>
       </div>
       <div class="gallery">
-        <div class="pic" style="background-image:url('https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=900&auto=format&fit=crop')"></div>
-        <div class="pic" style="background-image:url('https://images.unsplash.com/photo-1503951458645-643d53bfd90f?q=80&w=900&auto=format&fit=crop')"></div>
-        <div class="pic" style="background-image:url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=900&auto=format&fit=crop')"></div>
+  <img class="pic" src="./corte1.jpg">
+  <img class="pic" src="./corte2.jpg">
+  <img class="pic" src="./corte3.jpg">
       </div>
     </div>
 
