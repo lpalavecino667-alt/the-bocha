@@ -4,8 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Studio the bocha</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
+
 <style>
-  .topbar{
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  background:#050505;
+  color:#fff;
+  font-family:'Oswald',sans-serif;
+}
+
+h1,h2,h3{
+  font-family:'Cinzel',serif;
+}
+
+.topbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -27,24 +47,20 @@
   letter-spacing:2px;
   font-size:14px;
 }
-*{box-sizing:border-box}
-body{
-  margin:0;background:#050505;color:#fff;
-  font-family:'Oswald',sans-serif;h1,h2,h3{
-  font-family:'Cinzel',serif;
-  }
+
+.wrap{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
 }
-.wrap{max-width:1100px;margin:auto;padding:20px}
-<div class="topbar">
-  <div class="menu">☰</div>
-  <div class="brand">Studio the bocha</div>
-</div>
-  .hero{
+
+.hero{
   display:grid;
   grid-template-columns:1.4fr .8fr;
   gap:18px;
   margin-bottom:20px;
 }
+
 .card{
   background:linear-gradient(145deg,#111,#090909);
   border:1px solid rgba(212,175,55,.18);
@@ -54,27 +70,8 @@ body{
     0 0 30px rgba(0,0,0,.5),
     inset 0 0 20px rgba(255,255,255,.02);
 }
-  border:1px solid #232323;
-  border-radius:24px;
-  overflow:hidden;
-  box-shadow:0 0 30px rgba(0,0,0,.35);
-}
 
-.kicker{color:#d4af37;letter-spacing:3px;font-size:12px}
-h1{font-size:54px;margin:8px 0}
-  text-shadow:
-  0 0 10px rgba(212,175,55,.3),
-  0 0 25px rgba(212,175,55,.15);
-.sub{color:#ddd;max-width:420px}
-.btn,
-button{
-  background:linear-gradient(135deg,#f1d06b,#b8891d);
-  color:#000;
-  font-weight:bold;
-  border:none;
-  box-shadow:0 0 18px rgba(212,175,55,.35);
-  transition:.25s
-  .cover{
+.cover{
   min-height:720px;
   background:
     linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.95)),
@@ -86,18 +83,75 @@ button{
   text-align:center;
   padding:30px;
   position:relative;
-  .cover::before{
+}
+
+.cover::before{
   content:'';
   position:absolute;
   inset:0;
   background:url('./logo.png') center/contain no-repeat;
-  opacity:.95;
+  opacity:.18;
   filter:
     drop-shadow(0 0 25px rgba(212,175,55,.35))
     saturate(.2)
     brightness(.9);
-  }
-};
+}
+
+.logo{
+  width:240px;
+  display:block;
+  margin:0 auto 20px;
+  position:relative;
+  z-index:2;
+  animation:float 4s ease-in-out infinite;
+  filter:drop-shadow(0 0 20px rgba(212,175,55,.35));
+}
+
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+  100%{transform:translateY(0)}
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+
+.kicker{
+  color:#d4af37;
+  letter-spacing:3px;
+  font-size:12px;
+}
+
+h1{
+  font-size:54px;
+  margin:8px 0;
+  text-shadow:
+    0 0 10px rgba(212,175,55,.3),
+    0 0 25px rgba(212,175,55,.15);
+}
+
+.sub{
+  color:#ddd;
+  max-width:420px;
+  margin:auto;
+}
+
+.btn,
+button{
+  background:linear-gradient(135deg,#f1d06b,#b8891d);
+  color:#000;
+  font-weight:bold;
+  border:none;
+  box-shadow:0 0 18px rgba(212,175,55,.35);
+  transition:.25s;
+  text-decoration:none;
+  display:inline-block;
+  padding:14px 24px;
+  border-radius:12px;
+  margin-top:14px;
+  cursor:pointer;
 }
 
 .btn:hover,
@@ -105,35 +159,54 @@ button:hover{
   transform:translateY(-2px);
   box-shadow:0 0 25px rgba(212,175,55,.6);
 }
-  display:inline-block;text-decoration:none;
-  background:#d4af37;color:#000;
-  padding:14px 24px;border-radius:12px;
-  font-weight:bold;margin-top:10px;
+
+.side{
+  padding:18px;
 }
-.side{padding:18px}
-.side-title{color:#d4af37;margin:0 0 12px}
+
+.side-title{
+  color:#d4af37;
+  margin:0 0 12px;
+}
+
 .hour{
-  background:#181818;padding:14px;border-radius:14px;
-  margin-bottom:10px;text-align:center;
+  background:#181818;
+  padding:14px;
+  border-radius:14px;
+  margin-bottom:10px;
+  text-align:center;
 }
+
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:18px;
 }
-.section{padding:18px}
+
+.section{
+  padding:18px;
+}
+
 .tabs{
-  display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;
+  display:flex;
+  gap:10px;
+  margin-bottom:14px;
+  flex-wrap:wrap;
 }
+
 .tab{
-  background:#181818;padding:10px 14px;
-  border-radius:999px;color:#d4af37;
+  background:#181818;
+  padding:10px 14px;
+  border-radius:999px;
+  color:#d4af37;
 }
+
 .gallery{
   display:grid;
   grid-template-columns:1fr 1fr 1fr;
   gap:10px;
 }
+
 .pic{
   width:100%;
   height:180px;
@@ -141,93 +214,124 @@ button:hover{
   border-radius:16px;
   border:1px solid #2d2d2d;
 }
-  height:160px;border-radius:16px;
-  background-size:cover;background-position:center;
-}
+
 .info-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
 }
+
 .info{
-  background:#181818;padding:18px;
+  background:#181818;
+  padding:18px;
   border-radius:16px;
 }
+
 details{
   background:#181818;
   border-radius:16px;
   padding:16px;
 }
+
 summary{
   cursor:pointer;
   color:#d4af37;
   font-weight:bold;
 }
-.input,select,button{
-  width:100%;padding:14px;border:none;
-  border-radius:12px;margin-bottom:12px;
+
+.input,
+select,
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  margin-bottom:12px;
   font-size:15px;
 }
-.input,select{background:#181818;color:#fff}
-button{background:#d4af37;color:#000;font-weight:bold}
+
+.input,
+select{
+  background:#181818;
+  color:#fff;
+}
+
 .slots{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:8px;
 }
+
 .slot{
-  background:#181818;border:1px solid #333;
-  border-radius:10px;padding:10px;text-align:center;
+  background:#181818;
+  border:1px solid #333;
+  border-radius:10px;
+  padding:10px;
+  text-align:center;
   cursor:pointer;
 }
-.slot.active{background:#d4af37;color:#000;font-weight:bold}
-.slot.busy{background:#4a1616;color:#ffb3b3;cursor:not-allowed}
+
+.slot.active{
+  background:#d4af37;
+  color:#000;
+  font-weight:bold;
+}
+
+.slot.busy{
+  background:#4a1616;
+  color:#ffb3b3;
+  cursor:not-allowed;
+}
+
 .foot{
-  text-align:center;color:#777;padding:24px 0 50px;
+  text-align:center;
+  color:#777;
+  padding:24px 0 50px;
 }
+
 @media(max-width:900px){
-  .hero,.grid,.info-grid{grid-template-columns:1fr}
-  h1{font-size:42px}
-}.logo{
-  width:220px;
-  display:block;
-  margin-bottom:20px;
-  animation:float 4s ease-in-out infinite;
-  filter:drop-shadow(0 0 20px rgba(212,175,55,.35));
-}
-
-@keyframes float{
-  0%{
-    transform:translateY(0);
+  .hero,
+  .grid,
+  .info-grid{
+    grid-template-columns:1fr;
   }
 
-  50%{
-    transform:translateY(-8px);
-  }
-
-  100%{
-    transform:translateY(0);
+  h1{
+    font-size:42px;
   }
 }
 </style>
 </head>
 <body>
 
+<div class="topbar">
+  <div class="menu">☰</div>
+  <div class="brand">Studio the bocha</div>
+</div>
+
 <div class="wrap">
 
   <section class="hero">
+
     <div class="card cover">
-      <img class="logo" src="./logo.png">
-      <div>
+      <div class="hero-content">
+        <img class="logo" src="./logo.png">
+
         <div class="kicker">PREMIUM BARBER STUDIO</div>
+
         <h1>Studio<br>the bocha</h1>
-        <p class="sub">Experiencia premium. Detalle, presencia y estilo en cada corte.</p>
+
+        <p class="sub">
+          Experiencia premium. Detalle, presencia y estilo en cada corte.
+        </p>
+
         <a href="#agenda" class="btn">Reservar Turno 🔥</a>
       </div>
     </div>
 
     <div class="card side">
       <h3 class="side-title">Horarios</h3>
+
       <div class="hour">09:30</div>
       <div class="hour">10:30</div>
       <div class="hour">11:30</div>
@@ -239,30 +343,39 @@ button{background:#d4af37;color:#000;font-weight:bold}
       <div class="hour">19:30</div>
       <div class="hour">20:30</div>
     </div>
+
   </section>
 
   <section class="grid">
+
     <div class="card section">
       <h3 style="color:#d4af37">Estilos</h3>
+
       <div class="tabs">
         <div class="tab">Fade</div>
         <div class="tab">Crop</div>
         <div class="tab">Classic</div>
       </div>
+
       <div class="gallery">
-  <img class="pic" src="./corte1.jpg">
-  <img class="pic" src="./corte2.jpg">
-  <img class="pic" src="./corte3.jpg">
+        <img class="pic" src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=900&auto=format&fit=crop">
+
+        <img class="pic" src="https://images.unsplash.com/photo-1503951458645-643d53bfd90f?q=80&w=900&auto=format&fit=crop">
+
+        <img class="pic" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=900&auto=format&fit=crop">
       </div>
     </div>
 
     <div class="card section">
       <details open>
         <summary>🎁 Cliente fiel, acumula y gana</summary>
+
         <p>✅ 5 cortes = <b>Barba gratis</b></p>
         <p>✅ 10 cortes = <b>1 corte gratis</b></p>
       </details>
+
       <div style="height:12px"></div>
+
       <div class="info-grid">
         <div class="info">📸 @The.bocha</div>
         <div class="info">📍 Virgen del Carmen</div>
@@ -270,9 +383,11 @@ button{background:#d4af37;color:#000;font-weight:bold}
         <div class="info">🔥 Combo $12.000</div>
       </div>
     </div>
+
   </section>
 
   <section class="card section" id="agenda" style="margin-top:18px">
+
     <h3 style="color:#d4af37">Reservá tu turno</h3>
 
     <input id="name" class="input" placeholder="Tu nombre">
@@ -293,13 +408,18 @@ button{background:#d4af37;color:#000;font-weight:bold}
     </select>
 
     <div style="color:#bbb;margin-bottom:10px">Elegí horario</div>
+
     <div id="slots" class="slots"></div>
 
     <div style="height:12px"></div>
+
     <button id="btn">Confirmar Reserva</button>
+
   </section>
 
-  <div class="foot">The Bocha • Premium Barber Experience</div>
+  <div class="foot">
+    The Bocha • Premium Barber Experience
+  </div>
 
 </div>
 
@@ -319,31 +439,52 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const horarios = ["09:30","10:30","11:30","12:30","15:30","16:30","17:30","18:30","19:30","20:30","21:30","22:30"];
+const horarios = [
+  "09:30","10:30","11:30","12:30",
+  "15:30","16:30","17:30","18:30",
+  "19:30","20:30","21:30","22:30"
+];
+
 const slots = document.getElementById("slots");
 const dayEl = document.getElementById("day");
 let selected = null;
 
 async function cargar(){
   selected = null;
+
   const dia = dayEl.value;
+
   const docs = await getDocs(collection(db,"turnos"));
-  const ocupados = docs.docs.map(d=>d.data()).filter(t=>t.day===dia).map(t=>t.time);
+
+  const ocupados = docs.docs
+    .map(d=>d.data())
+    .filter(t=>t.day===dia)
+    .map(t=>t.time);
 
   slots.innerHTML = "";
+
   horarios.forEach(h=>{
     const div = document.createElement("div");
+
     div.className = "slot";
-    div.textContent = ocupados.includes(h) ? h + " ❌" : h;
+
+    div.textContent = ocupados.includes(h)
+      ? h + " ❌"
+      : h;
+
     if(ocupados.includes(h)){
       div.classList.add("busy");
     }else{
       div.onclick = ()=>{
-        document.querySelectorAll(".slot").forEach(x=>x.classList.remove("active"));
+        document.querySelectorAll(".slot")
+          .forEach(x=>x.classList.remove("active"));
+
         div.classList.add("active");
+
         selected = h;
       };
     }
+
     slots.appendChild(div);
   });
 }
@@ -358,12 +499,27 @@ document.getElementById("btn").onclick = async ()=>{
   if(!name) return alert("Poné tu nombre");
   if(!selected) return alert("Elegí horario");
 
-  await addDoc(collection(db,"turnos"), { name, service, day, time:selected, createdAt:Date.now() });
+  await addDoc(collection(db,"turnos"),{
+    name,
+    service,
+    day,
+    time:selected,
+    createdAt:Date.now()
+  });
 
-  const msg = "Hola The Bocha 💈, soy " + name + ". Reservé " + service + " para " + day + " a las " + selected;
-  window.open("https://wa.me/5493835692337?text=" + encodeURIComponent(msg), "_blank");
+  const msg =
+    "Hola The Bocha 💈, soy " + name +
+    ". Reservé " + service +
+    " para " + day +
+    " a las " + selected;
+
+  window.open(
+    "https://wa.me/5493835692337?text=" + encodeURIComponent(msg),
+    "_blank"
+  );
 
   alert("Turno reservado 🔥");
+
   cargar();
 };
 
