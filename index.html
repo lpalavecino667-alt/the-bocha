@@ -1,598 +1,454 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio the bocha</title><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Oswald:wght@300;400;700&display=swap" rel="stylesheet"><style>
+<title>The Bocha Premium</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
-  background:#050505;
-  color:#fff;
-  font-family:'Oswald',sans-serif;
-  overflow-x:hidden;
+background:#000;
+font-family:'Oswald',sans-serif;
+color:white;
+overflow-x:hidden;
 }
 
-body::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at top,#d4af3722 0%,transparent 30%),
-    radial-gradient(circle at bottom,#ffffff08 0%,transparent 25%);
-  pointer-events:none;
+/* VIDEO */
+
+.video-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-3;
+filter:brightness(.18) blur(2px);
 }
 
-.topbar{
-  position:sticky;
-  top:0;
-  z-index:999;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 22px;
-  backdrop-filter:blur(10px);
-  background:rgba(0,0,0,.75);
-  border-bottom:1px solid rgba(212,175,55,.15);
+.overlay{
+position:fixed;
+inset:0;
+background:
+linear-gradient(to bottom,rgba(0,0,0,.4),rgba(0,0,0,.95)),
+radial-gradient(circle at top,#d4af3720 0%,transparent 40%);
+z-index:-2;
 }
 
-.menu{
-  font-size:28px;
-  color:#d4af37;
+/* SIDEBAR */
+
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+width:78px;
+height:100vh;
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(12px);
+border-right:1px solid rgba(212,175,55,.2);
+display:flex;
+flex-direction:column;
+align-items:center;
+padding-top:20px;
+z-index:999;
 }
 
-.brand{
-  letter-spacing:3px;
-  color:#d4af37;
-  font-size:13px;
+.side-btn{
+width:54px;
+height:54px;
+margin-bottom:16px;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+background:#0f0f0f;
+border:1px solid rgba(212,175,55,.2);
+color:#d4af37;
+transition:.3s;
 }
 
-.wrap{
-  width:100%;
-  max-width:1200px;
-  margin:auto;
-  padding:20px;
+.side-btn:hover{
+transform:translateY(-3px);
+background:#d4af37;
+color:#000;
+box-shadow:0 0 20px rgba(212,175,55,.45);
 }
+
+/* MAIN */
+
+.main{
+padding-left:95px;
+padding-right:18px;
+}
+
+/* HERO */
 
 .hero{
-  display:grid;
-  grid-template-columns:1.4fr .8fr;
-  gap:18px;
-  margin-bottom:22px;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
 }
 
-.card{
-  background:linear-gradient(145deg,#111,#090909);
-  border:1px solid rgba(212,175,55,.14);
-  border-radius:28px;
-  overflow:hidden;
-  box-shadow:
-    0 0 40px rgba(0,0,0,.45),
-    inset 0 0 20px rgba(255,255,255,.02);
-}
-
-.cover{
-  min-height:760px;
-  position:relative;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:30px;
-  overflow:hidden;
-}
-
-.cover::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.96)),
-    radial-gradient(circle at top,#d4af3740 0%,transparent 35%),
-    #050505;
-}
-
-.cover::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:url('./logo.png') center/contain no-repeat;
-  opacity:.12;
-  filter:
-    drop-shadow(0 0 30px rgba(212,175,55,.5))
-    brightness(.8)
-    saturate(.2);
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
+.hero-box{
+max-width:760px;
+animation:fadeUp 1s ease;
 }
 
 .logo{
-  width:260px;
-  margin:auto auto 18px;
-  display:block;
-  filter:drop-shadow(0 0 25px rgba(212,175,55,.4));
-  animation:float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
-  100%{transform:translateY(0)}
+width:300px;
+max-width:90%;
+margin-bottom:25px;
+filter:
+drop-shadow(0 0 25px rgba(212,175,55,.4));
+animation:float 4s ease-in-out infinite;
 }
 
 .kicker{
-  color:#d4af37;
-  letter-spacing:4px;
-  font-size:12px;
-  margin-bottom:10px;
+letter-spacing:4px;
+color:#d4af37;
+font-size:13px;
+margin-bottom:12px;
 }
 
-h1{
-  font-family:'Cinzel',serif;
-  font-size:64px;
-  line-height:1;
-  margin-bottom:14px;
-  text-shadow:
-    0 0 15px rgba(212,175,55,.3),
-    0 0 40px rgba(212,175,55,.12);
+.hero h1{
+font-family:'Cinzel',serif;
+font-size:68px;
+line-height:1;
+margin-bottom:18px;
+text-shadow:
+0 0 15px rgba(212,175,55,.25),
+0 0 35px rgba(212,175,55,.15);
 }
 
 .sub{
-  max-width:430px;
-  margin:auto;
-  color:#d5d5d5;
-  line-height:1.5;
-}
-
-.btn,
-button{
-  border:none;
-  border-radius:14px;
-  padding:15px 24px;
-  font-size:15px;
-  font-weight:bold;
-  background:linear-gradient(135deg,#f5d67c,#b9891b);
-  color:#000;
-  margin-top:20px;
-  cursor:pointer;
-  transition:.25s;
-  box-shadow:0 0 20px rgba(212,175,55,.35);
-}
-
-.btn:hover,
-button:hover{
-  transform:translateY(-2px) scale(1.02);
-  box-shadow:0 0 28px rgba(212,175,55,.55);
+font-size:18px;
+color:#d7d7d7;
+max-width:520px;
+margin:auto;
+line-height:1.6;
+margin-bottom:28px;
 }
 
 .btn{
-  display:inline-block;
-  text-decoration:none;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+padding:18px 28px;
+border-radius:22px;
+background:linear-gradient(135deg,#f1d06b,#b8891d);
+color:#000;
+font-weight:bold;
+text-decoration:none;
+font-size:18px;
+box-shadow:0 0 28px rgba(212,175,55,.35);
+transition:.3s;
 }
 
-.side{
-  padding:18px;
+.btn:hover{
+transform:translateY(-4px) scale(1.02);
+box-shadow:0 0 35px rgba(212,175,55,.6);
 }
 
-.side-title{
-  color:#d4af37;
-  margin-bottom:16px;
-  font-family:'Cinzel',serif;
+/* CARDS */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+margin-top:35px;
 }
 
-.hour{
-  background:#181818;
-  border:1px solid rgba(212,175,55,.08);
-  border-radius:16px;
-  padding:15px;
-  margin-bottom:10px;
-  text-align:center;
-  transition:.25s;
+.card{
+background:rgba(10,10,10,.82);
+backdrop-filter:blur(12px);
+border:1px solid rgba(212,175,55,.18);
+border-radius:26px;
+padding:24px;
+transition:.3s;
+box-shadow:
+0 0 30px rgba(0,0,0,.4),
+inset 0 0 20px rgba(255,255,255,.02);
 }
 
-.hour:hover{
-  transform:translateY(-2px);
-  background:#202020;
-  box-shadow:0 0 18px rgba(212,175,55,.15);
+.card:hover{
+transform:translateY(-6px);
+border-color:#d4af37;
+box-shadow:
+0 0 35px rgba(212,175,55,.18);
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+.card h3{
+color:#d4af37;
+margin-bottom:10px;
+font-size:20px;
 }
+
+/* GALERIA */
 
 .section{
-  padding:22px;
+padding:70px 0;
 }
 
 .title{
-  color:#d4af37;
-  font-family:'Cinzel',serif;
-  margin-bottom:14px;
-}
-
-.tabs{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:16px;
-}
-
-.tab{
-  background:#181818;
-  border:1px solid rgba(212,175,55,.15);
-  padding:10px 15px;
-  border-radius:999px;
-  color:#d4af37;
+font-size:38px;
+font-family:'Cinzel',serif;
+margin-bottom:25px;
+text-align:center;
 }
 
 .gallery{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:12px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:18px;
 }
 
-.pic{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-  border-radius:18px;
-  border:1px solid rgba(212,175,55,.15);
-  transition:.25s;
+.gallery img{
+width:100%;
+height:340px;
+object-fit:cover;
+border-radius:24px;
+border:1px solid rgba(212,175,55,.2);
+transition:.4s;
 }
 
-.pic:hover{
-  transform:scale(1.03);
+.gallery img:hover{
+transform:scale(1.03);
+box-shadow:0 0 30px rgba(212,175,55,.2);
 }
 
-.info-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
+/* TURNOS */
 
-.info{
-  background:#181818;
-  border-radius:18px;
-  padding:18px;
-  border:1px solid rgba(212,175,55,.1);
-}
-
-.info strong{
-  color:#d4af37;
-}
-
-details{
-  background:#181818;
-  border-radius:18px;
-  padding:18px;
-  border:1px solid rgba(212,175,55,.1);
-}
-
-summary{
-  cursor:pointer;
-  color:#d4af37;
-  font-weight:bold;
+.booking{
+background:rgba(10,10,10,.82);
+padding:35px;
+border-radius:28px;
+border:1px solid rgba(212,175,55,.18);
+max-width:700px;
+margin:auto;
 }
 
 .input,
-select{
-  width:100%;
-  background:#181818;
-  color:#fff;
-  border:none;
-  border-radius:14px;
-  padding:15px;
-  margin-bottom:12px;
-  font-size:15px;
+select,
+button{
+width:100%;
+padding:18px;
+margin-bottom:15px;
+border:none;
+border-radius:18px;
+font-size:16px;
+background:#141414;
+color:white;
 }
 
-.slots{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
+button{
+background:linear-gradient(135deg,#f1d06b,#b8891d);
+color:black;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
 }
 
-.slot{
-  background:#181818;
-  border:1px solid #333;
-  border-radius:12px;
-  padding:12px;
-  text-align:center;
-  cursor:pointer;
-  transition:.25s;
+button:hover{
+transform:translateY(-3px);
 }
 
-.slot:hover{
-  background:#232323;
+.footer{
+text-align:center;
+padding:40px 0;
+color:#999;
 }
 
-.slot.active{
-  background:#d4af37;
-  color:#000;
-  font-weight:bold;
-}
+/* ANIMACIONES */
 
-.slot.busy{
-  background:#441515;
-  color:#ffb6b6;
-  cursor:not-allowed;
-}
-
-.foot{
-  text-align:center;
-  color:#777;
-  padding:30px 0 60px;
-}
-
-@media(max-width:900px){
-  .hero,
-  .grid,
-  .info-grid{
-    grid-template-columns:1fr;
-  }
-
-  h1{
-    font-size:48px;
-  }
-
-  .cover{
-    min-height:620px;
-  }
-
-  .logo{
-    width:210px;
-  }
-
-  .gallery{
-    grid-template-columns:1fr;
-  }
-}
-
-
-.video-bg{
-  position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:.12;
-  z-index:-2;
-  filter:blur(2px) brightness(.45);
-}
-
-.fade-up{
-  animation:fadeUp 1s ease;
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
 }
 
 @keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(20px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
-.glow{
-  box-shadow:0 0 30px rgba(212,175,55,.22);
+/* MOBILE */
+
+@media(max-width:900px){
+
+.sidebar{
+width:64px;
 }
 
-.menu-panel{
-  position:fixed;
-  left:-260px;
-  top:0;
-  width:240px;
-  height:100vh;
-  background:#0b0b0b;
-  border-right:1px solid rgba(212,175,55,.15);
-  z-index:9999;
-  padding:30px 20px;
-  transition:.35s;
+.main{
+padding-left:78px;
 }
 
-.menu-panel.open{
-  left:0;
+.hero h1{
+font-size:46px;
 }
 
-.menu-panel a{
-  display:block;
-  color:#fff;
-  text-decoration:none;
-  margin-bottom:18px;
-  font-size:18px;
+.logo{
+width:220px;
 }
 
-.menu-panel a:hover{
-  color:#d4af37;
+.sub{
+font-size:15px;
 }
 
-</style></head>
-<body><video autoplay muted loop playsinline class="video-bg">
-  <source src="https://cdn.coverr.co/videos/coverr-man-getting-a-haircut-1562848855330?download=1080p" type="video/mp4">
-</video><div class="menu-panel" id="menuPanel">
-  <a href="#">Inicio</a>
-  <a href="#agenda">Reservar</a>
-  <a href="https://instagram.com/The.bocha">Instagram</a>
-  <a href="https://wa.me/5493835692337">WhatsApp</a>
-</div><div class="topbar">
-  <div class="menu" onclick="toggleMenu()">☰</div>
-  <div class="brand">STUDIO THE BOCHA</div>
-</div><div class="wrap"><section class="hero fade-up"><div class="card cover">
-  <div class="hero-content">
-    <img class="logo" src="./logo.png"><div class="kicker">PREMIUM BARBER STUDIO</div>
+}
 
-<h1>Studio<br>the bocha</h1>
+</style>
+</head>
+<body>
+
+<!-- VIDEO -->
+
+<video class="video-bg" autoplay muted loop playsinline>
+<source src="video.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="side-btn">☰</div>
+<div class="side-btn">💈</div>
+<div class="side-btn">📸</div>
+<div class="side-btn">🔥</div>
+<div class="side-btn">📍</div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<section class="hero">
+
+<div class="hero-box">
+
+<img src="logo.png" class="logo">
+
+<div class="kicker">
+PREMIUM BARBER EXPERIENCE
+</div>
+
+<h1>
+Studio<br>
+the bocha
+</h1>
 
 <p class="sub">
-  Estilo, detalle y presencia. Reservá tu turno y viví la experiencia premium.
+Más que un corte.  
+Es actitud, presencia y experiencia premium.
 </p>
 
-<a href="#agenda" class="btn">Reservar Turno 🔥</a>
+<a href="#turnos" class="btn">
+📅 RESERVAR TURNO
+</a>
 
-  </div>
-</div><div class="card side">
-  <h3 class="side-title">Horarios</h3>  <div class="hour">09:30</div>
-  <div class="hour">10:30</div>
-  <div class="hour">11:30</div>
-  <div class="hour">12:30</div>
-  <div class="hour">15:30</div>
-  <div class="hour">16:30</div>
-  <div class="hour">17:30</div>
-  <div class="hour">18:30</div>
-  <div class="hour">19:30</div>
-  <div class="hour">20:30</div>
-</div></section><section class="grid"><div class="card section">
-  <h3 class="title">Estilos</h3>  <div class="tabs">
-    <div class="tab">Fade</div>
-    <div class="tab">Freestyle</div>
-    <div class="tab">Classic</div>
-  </div>  <div class="gallery">
-    <img class="pic" src="./corte1.jpg">
-    <img class="pic" src="./corte2.jpg">
-    <img class="pic" src="./corte3.jpg">
-  </div>
-</div><div class="card section">  <details open>
-    <summary>🎁 Cliente fiel, acumula y gana</summary><br>
+<div class="cards">
 
-<p>✅ 5 cortes = <strong>Barba gratis</strong></p>
-<br>
-<p>✅ 10 cortes = <strong>1 corte gratis</strong></p>
+<div class="card">
+<h3>📍 Ubicación</h3>
+<p>Virgen del Carmen</p>
+</div>
 
-  </details>  <div style="height:14px"></div>  <div class="info-grid">
-    <div class="info">📸 <strong>@The.bocha</strong></div>
-    <div class="info">📍 <strong>Virgen del Carmen</strong></div>
-    <div class="info">💈 <strong>Corte $10.000</strong></div>
-    <div class="info">🔥 <strong>Combo $12.000</strong></div>
-  </div></div></section><section class="card section" id="agenda" style="margin-top:18px"><h3 class="title">Reservá tu turno</h3><input id="name" class="input" placeholder="Tu nombre"><select id="service">
-  <option value="Corte">💈 Corte - $10.000</option>
-  <option value="Barba">🧔 Barba - $2.000</option>
-  <option value="Combo">🔥 Combo - $12.000</option>
-</select><select id="day">
-  <option>Lunes</option>
-  <option>Martes</option>
-  <option>Miércoles</option>
-  <option>Jueves</option>
-  <option>Viernes</option>
-  <option>Sábado</option>
-</select><div style="color:#bbb;margin-bottom:10px">Elegí horario</div><div id="slots" class="slots"></div><button id="btn">Confirmar Reserva</button>
+<div class="card">
+<h3>💈 Precios</h3>
+<p>Corte $10.000</p>
+</div>
 
-</section><div class="foot">
-  The Bocha • Premium Barber Experience
-</div></div><script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+<div class="card">
+<h3>⭐ Cliente fiel</h3>
+<p>Beneficios exclusivos</p>
+</div>
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBzBRXDzCmNkEPxAmsPGMBgbKVipSOIkaE",
-  authDomain: "the-bocha.firebaseapp.com",
-  projectId: "the-bocha",
-  storageBucket: "the-bocha.firebasestorage.app",
-  messagingSenderId: "284110596241",
-  appId: "1:284110596241:web:f39e4c03f3c3eabb1cb730"
-};
+</div>
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+</div>
 
-const horarios = [
-"09:30","10:30","11:30","12:30",
-"15:30","16:30","17:30","18:30",
-"19:30","20:30","21:30","22:30"
-];
+</section>
 
-const slots = document.getElementById("slots");
-const dayEl = document.getElementById("day");
-let selected = null;
+<section class="section">
 
-async function cargar(){
-selected = null;
-const dia = dayEl.value;
+<h2 class="title">
+Estilos
+</h2>
 
-const docs = await getDocs(collection(db,"turnos"));
+<div class="gallery">
 
-const ocupados = docs.docs
-.map(d=>d.data())
-.filter(t=>t.day===dia)
-.map(t=>t.time);
+<img src="IMG_20250106_130104.jpg">
 
-slots.innerHTML = "";
+<img src="IMG_20260206_175123.jpg">
 
-horarios.forEach(h=>{
-const div = document.createElement("div");
+<img src="IMG_20260228_170132.jpg">
 
-div.className = "slot";
+</div>
 
-div.textContent = ocupados.includes(h)
-? h + " ❌"
-: h;
+</section>
 
-if(ocupados.includes(h)){
-div.classList.add("busy");
-}else{
-div.onclick = ()=>{
-document.querySelectorAll(".slot")
-.forEach(x=>x.classList.remove("active"));
+<section class="section" id="turnos">
 
-div.classList.add("active");
-selected = h;
-};
-}
+<h2 class="title">
+Reservar turno
+</h2>
 
-slots.appendChild(div);
-});
-}
+<div class="booking">
 
-dayEl.onchange = cargar;
+<input class="input" placeholder="Tu nombre">
 
-document.getElementById("btn").onclick = async ()=>{
-const name = document.getElementById("name").value.trim();
-const service = document.getElementById("service").value;
-const day = dayEl.value;
+<select>
+<option>💈 Corte</option>
+<option>🧔 Barba</option>
+<option>🔥 Combo</option>
+</select>
 
-if(!name) return alert("Poné tu nombre");
-if(!selected) return alert("Elegí horario");
+<select>
+<option>Lunes</option>
+<option>Martes</option>
+<option>Miércoles</option>
+<option>Jueves</option>
+<option>Viernes</option>
+<option>Sábado</option>
+</select>
 
-await addDoc(collection(db,"turnos"),{
-name,
-service,
-day,
-time:selected,
-createdAt:Date.now()
-});
+<button>
+CONFIRMAR RESERVA 🔥
+</button>
 
-const msg =
-"Hola The Bocha 💈, soy " + name +
-". Reservé " + service +
-" para " + day +
-" a las " + selected;
+</div>
 
-window.open(
-"https://wa.me/5493835692337?text=" + encodeURIComponent(msg),
-"_blank"
-);
+</section>
 
-alert("Turno reservado 🔥");
+<div class="footer">
+The Bocha © Premium Barber Studio
+</div>
 
-cargar();
-};
+</div>
 
-cargar();
-
-function toggleMenu(){
-  document.getElementById('menuPanel').classList.toggle('open');
-}
-</script></body>
+</body>
 </html>
