@@ -63,7 +63,7 @@ padding-top:20px;
 z-index:999;
 }
 
-.side-btn{
+.side-btn{box-shadow:0 0 40px rgba(0,0,0,.5);
 width:54px;
 height:54px;
 margin-bottom:16px;
@@ -187,10 +187,11 @@ box-shadow:
 }
 
 .card:hover{
-transform:translateY(-6px);
+transform:translateY(-8px) scale(1.02);
 border-color:#d4af37;
 box-shadow:
-0 0 35px rgba(212,175,55,.18);
+0 0 45px rgba(212,175,55,.18),
+0 0 60px rgba(0,0,0,.6);
 }
 
 .card h3{
@@ -338,7 +339,7 @@ font-size:15px;
 <div class="sidebar">
 
 <div class="side-btn">☰</div>
-<div class="side-btn">🔥</div>
+<a class="side-btn" href="#admin">🔥</a>
 <a class="side-btn" href="#turnos">💈</a>
 
 <a class="side-btn" href="https://instagram.com/The.bocha">📸</a>
@@ -448,7 +449,32 @@ CONFIRMAR RESERVA 🔥
 </div>
 
 </section>
+<section class="section">
 
+<h2 class="title">
+Panel Admin
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>📅 Turnos Hoy</h3>
+<p id="turnosHoy">12</p>
+</div>
+
+<div class="card">
+<h3>💰 Ganancia</h3>
+<p>$120.000</p>
+</div>
+
+<div class="card">
+<h3>🔥 Clientes</h3>
+<p>28 activos</p>
+</div>
+
+</div>
+
+</section>
 <div class="footer">
 The Bocha © Premium Barber Studio
 </div>
