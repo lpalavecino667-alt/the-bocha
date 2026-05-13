@@ -176,23 +176,34 @@ margin-bottom:28px;
 display:inline-flex;
 align-items:center;
 justify-content:center;
-gap:12px;
-padding:18px 28px;
-border-radius:22px;
-background:linear-gradient(135deg,#f1d06b,#b8891d);
+padding:18px 34px;
+border-radius:18px;
+background:linear-gradient(
+135deg,
+#f8e08a 0%,
+#d4af37 40%,
+#9f6b00 100%
+);
 color:#000;
-font-weight:bold;
+font-weight:700;
+letter-spacing:1px;
 text-decoration:none;
-font-size:18px;
-box-shadow:0 0 28px rgba(212,175,55,.35);
+font-size:17px;
+border:none;
+cursor:pointer;
+box-shadow:
+0 0 20px rgba(212,175,55,.45),
+0 0 45px rgba(212,175,55,.18);
 transition:.3s;
 position:relative;
 overflow:hidden;
 }
 
 .btn:hover{
-transform:translateY(-4px) scale(1.02);
-box-shadow:0 0 35px rgba(212,175,55,.6);
+transform:translateY(-4px) scale(1.03);
+box-shadow:
+0 0 35px rgba(212,175,55,.75),
+0 0 70px rgba(212,175,55,.25);
 }
 
 .btn::before{
@@ -376,7 +387,7 @@ the bocha
 </h1><p class="sub">
 Más que un corte.
 Es actitud, presencia y experiencia premium.
-</p><a href="#turnos" class="btn">
+<section id="turnos"
 📅 RESERVAR TURNO
 </a><div class="cards">
 <div class="card">
@@ -393,10 +404,20 @@ Es actitud, presencia y experiencia premium.
 </section><section class="section">
 <h2 class="title">
 Estilos
-</h2><div class="gallery">
-<img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1200&auto=format&fit=crop">
-<img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=1200&auto=format&fit=crop">
-<img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1200&auto=format&fit=crop">
+<div class="gallery">
+
+<video autoplay muted loop playsinline>
+<source src="video1.mp4" type="video/mp4">
+</video>
+
+<video autoplay muted loop playsinline>
+<source src="video2.mp4" type="video/mp4">
+</video>
+
+<video autoplay muted loop playsinline>
+<source src="video3.mp4" type="video/mp4">
+</video>
+
 </div>
 </section><section class="section" id="turnos">
 <h2 class="title">
