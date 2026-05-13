@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Bocha Premium</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
+<title>The Bocha Premium</title><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet"><style>
 
 *{
 margin:0;
@@ -23,7 +18,38 @@ color:white;
 overflow-x:hidden;
 }
 
-/* VIDEO */
+.loader{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:99999;
+animation:fadeLoader 1s ease forwards;
+animation-delay:2.2s;
+}
+
+.loader-logo{
+width:180px;
+margin-bottom:20px;
+animation:float 3s ease-in-out infinite;
+filter:drop-shadow(0 0 25px rgba(212,175,55,.45));
+}
+
+.loader h1{
+font-family:'Cinzel',serif;
+letter-spacing:6px;
+color:#d4af37;
+}
+
+@keyframes fadeLoader{
+to{
+opacity:0;
+visibility:hidden;
+}
+}
 
 .video-bg{
 position:fixed;
@@ -43,9 +69,8 @@ background:
 linear-gradient(to bottom,rgba(0,0,0,.4),rgba(0,0,0,.95)),
 radial-gradient(circle at top,#d4af3720 0%,transparent 40%);
 z-index:-2;
+mix-blend-mode:screen;
 }
-
-/* SIDEBAR */
 
 .sidebar{
 position:fixed;
@@ -61,10 +86,12 @@ flex-direction:column;
 align-items:center;
 padding-top:20px;
 z-index:999;
+border-top-right-radius:24px;
+border-bottom-right-radius:24px;
+box-shadow:0 0 40px rgba(0,0,0,.5);
 }
 
 .side-btn{
-box-shadow:0 0 40px rgba(0,0,0,.5);
 width:54px;
 height:54px;
 margin-bottom:16px;
@@ -77,24 +104,21 @@ background:#0f0f0f;
 border:1px solid rgba(212,175,55,.2);
 color:#d4af37;
 transition:.3s;
+text-decoration:none;
+cursor:pointer;
 }
 
 .side-btn:hover{
-  text-decoration:none;
 transform:translateY(-3px);
 background:#d4af37;
 color:#000;
 box-shadow:0 0 20px rgba(212,175,55,.45);
 }
 
-/* MAIN */
-
 .main{
 padding-left:95px;
 padding-right:18px;
 }
-
-/* HERO */
 
 .hero{
 min-height:100vh;
@@ -109,15 +133,15 @@ padding-top:40px;
 .hero-box{
 max-width:760px;
 animation:fadeUp 1s ease;
+backdrop-filter:blur(4px);
 }
 
 .logo{
-opacity:.95;
 width:300px;
 max-width:90%;
 margin-bottom:25px;
-filter:
-drop-shadow(0 0 25px rgba(212,175,55,.4));
+opacity:.95;
+filter:drop-shadow(0 0 25px rgba(212,175,55,.4));
 animation:float 4s ease-in-out infinite;
 }
 
@@ -133,6 +157,7 @@ font-family:'Cinzel',serif;
 font-size:68px;
 line-height:1;
 margin-bottom:18px;
+letter-spacing:2px;
 text-shadow:
 0 0 15px rgba(212,175,55,.25),
 0 0 35px rgba(212,175,55,.15);
@@ -161,6 +186,8 @@ text-decoration:none;
 font-size:18px;
 box-shadow:0 0 28px rgba(212,175,55,.35);
 transition:.3s;
+position:relative;
+overflow:hidden;
 }
 
 .btn:hover{
@@ -168,7 +195,20 @@ transform:translateY(-4px) scale(1.02);
 box-shadow:0 0 35px rgba(212,175,55,.6);
 }
 
-/* CARDS */
+.btn::before{
+content:'';
+position:absolute;
+top:0;
+left:-120%;
+width:100%;
+height:100%;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);
+transition:.6s;
+}
+
+.btn:hover::before{
+left:120%;
+}
 
 .cards{
 display:grid;
@@ -203,8 +243,6 @@ margin-bottom:10px;
 font-size:20px;
 }
 
-/* GALERIA */
-
 .section{
 padding:70px 0;
 }
@@ -237,8 +275,6 @@ box-shadow:
 0 0 35px rgba(212,175,55,.25),
 0 0 60px rgba(0,0,0,.5);
 }
-
-/* TURNOS */
 
 .booking{
 background:rgba(10,10,10,.82);
@@ -280,8 +316,6 @@ padding:40px 0;
 color:#999;
 }
 
-/* ANIMACIONES */
-
 @keyframes float{
 0%{transform:translateY(0)}
 50%{transform:translateY(-10px)}
@@ -299,10 +333,7 @@ transform:translateY(0);
 }
 }
 
-/* MOBILE */
-
 @media(max-width:900px){
-
 .sidebar{
 width:64px;
 }
@@ -322,212 +353,90 @@ width:220px;
 .sub{
 font-size:15px;
 }
-
 }
 
-</style>
-</head>
-<body>
-
-<!-- VIDEO -->
-
-<video class="video-bg" autoplay muted loop playsinline>
+</style></head>
+<body><div class="loader" id="loader">
+<img src="https://i.imgur.com/8Km9tLL.png" class="loader-logo">
+<h1>THE BOCHA</h1>
+</div><video class="video-bg" autoplay muted loop playsinline>
 <source src="video.mp4" type="video/mp4">
-</video>
-
-<div class="overlay"></div>
-
-<!-- SIDEBAR -->
-
-<div class="sidebar">
-
-<div class="side-btn">☰</div>
-<a class="side-btn" href="#admin">🔥</a>
+</video><div class="overlay"></div><div class="sidebar">
+<a class="side-btn" href="#">☰</a>
 <a class="side-btn" href="#turnos">💈</a>
-
 <a class="side-btn" href="https://instagram.com/The.bocha">📸</a>
-
+<a class="side-btn" href="#admin">🔥</a>
 <a class="side-btn" href="https://wa.me/5493835692337">📍</a>
-  
-</div>
-
-<!-- MAIN -->
-
-<div class="main">
-
-<section class="hero">
-
-<div class="hero-box">
-
-<img src="https://i.imgur.com/8Km9tLL.png" class="logo">
-
-<div class="kicker">
+</div><div class="main"><section class="hero">
+<div class="hero-box"><img src="https://i.imgur.com/8Km9tLL.png" class="logo"><div class="kicker">
 PREMIUM BARBER EXPERIENCE
-</div>
-
-<h1>
+</div><h1>
 Studio<br>
 the bocha
-</h1>
-
-<p class="sub">
-Más que un corte.  
+</h1><p class="sub">
+Más que un corte.
 Es actitud, presencia y experiencia premium.
-</p>
-
-<a href="#turnos" class="btn">
+</p><a href="#turnos" class="btn">
 📅 RESERVAR TURNO
-</a>
-
-<div class="cards">
-
+</a><div class="cards">
 <div class="card">
 <h3>📍 Ubicación</h3>
 <p>Virgen del Carmen</p>
-</div>
-
-<div class="card">
+</div><div class="card">
 <h3>💈 Precios</h3>
 <p>Corte $10.000</p>
-</div>
-
-<div class="card">
+</div><div class="card">
 <h3>⭐ Cliente fiel</h3>
 <p>Beneficios exclusivos</p>
 </div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section" id="admin">
-
+</div></div>
+</section><section class="section">
 <h2 class="title">
 Estilos
-</h2>
-
-<div class="gallery">
-
+</h2><div class="gallery">
 <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1200&auto=format&fit=crop">
-
 <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=1200&auto=format&fit=crop">
-
 <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1200&auto=format&fit=crop">
-
 </div>
-
-</section>
-
-<section class="section" id="turnos">
-
+</section><section class="section" id="turnos">
 <h2 class="title">
 Reservar turno
-</h2>
-
-<div class="booking">
-
-<input class="input" placeholder="Tu nombre">
-
-<select>
+</h2><div class="booking">
+<input class="input" placeholder="Tu nombre"><select>
 <option>💈 Corte</option>
 <option>🧔 Barba</option>
 <option>🔥 Combo</option>
-</select>
-
-<select>
+</select><select>
 <option>Lunes</option>
 <option>Martes</option>
 <option>Miércoles</option>
 <option>Jueves</option>
 <option>Viernes</option>
 <option>Sábado</option>
-</select>
-
-<button>
+</select><button>
 CONFIRMAR RESERVA 🔥
 </button>
-
 </div>
-
-</section>
-<section class="section">
-
+</section><section class="section" id="admin">
 <h2 class="title">
 Panel Admin
-</h2>
-
-<div class="cards">
-
+</h2><div class="cards">
 <div class="card">
 <h3>📅 Turnos Hoy</h3>
 <p id="turnosHoy">12</p>
-</div>
-
-<div class="card">
+</div><div class="card">
 <h3>💰 Ganancia</h3>
 <p>$120.000 esta semana</p>
-</div>
-
-<div class="card">
+</div><div class="card">
 <h3>🔥 Clientes</h3>
 <p>28 clientes frecuentes</p>
 </div>
-
 </div>
-
-</section>
-<div class="footer">
+</section><div class="footer">
 The Bocha © Premium Barber Studio
-</div>
-
-</div>
-.loader{
-position:fixed;
-inset:0;
-background:#000;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:99999;
-animation:fadeLoader 1s ease forwards;
-animation-delay:2.2s;
-}
-
-.loader-logo{
-width:180px;
-margin-bottom:20px;
-animation:float 3s ease-in-out infinite;
-filter:drop-shadow(0 0 25px rgba(212,175,55,.45));
-}
-
-.loader h1{
-font-family:'Cinzel',serif;
-letter-spacing:6px;
-color:#d4af37;
-}
-
-@keyframes fadeLoader{
-to{
-opacity:0;
-visibility:hidden;
-}
-}
-</body>
-  <script>
-
+</div></div><script>
 setTimeout(()=>{
 document.getElementById('loader').style.display='none';
 },3000);
-
-  </script>
-<div class="loader" id="loader">
-
-<img src="https://i.imgur.com/8Km9tLL.png" class="loader-logo">
-
-<h1>THE BOCHA</h1>
-
-  </div>
+</script></body>
 </html>
