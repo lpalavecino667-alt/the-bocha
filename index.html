@@ -6,7 +6,7 @@
 
 <title>The Bocha Premium</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -18,113 +18,92 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#000;
+background:#050505;
 font-family:'Oswald',sans-serif;
 color:white;
 overflow-x:hidden;
 }
 
-.loader{
+/* FONDO */
+
+.bg-logo{
 position:fixed;
 inset:0;
-background:#000;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
-z-index:99999;
-animation:fadeLoader 1s ease forwards;
-animation-delay:2.2s;
+z-index:-2;
+opacity:.05;
+pointer-events:none;
 }
 
-.loader-logo{
-width:180px;
-margin-bottom:20px;
-animation:float 3s ease-in-out infinite;
-filter:drop-shadow(0 0 25px rgba(212,175,55,.45));
+.bg-logo img{
+width:700px;
+max-width:90%;
+filter:drop-shadow(0 0 60px rgba(212,175,55,.35));
 }
 
-.loader h1{
-font-family:'Cinzel',serif;
-letter-spacing:6px;
-color:#d4af37;
-}
-
-@keyframes fadeLoader{
-to{
-opacity:0;
-visibility:hidden;
-}
-}
-
-.video-bg{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-object-fit:cover;
-z-index:-3;
-filter:brightness(.18) blur(2px);
-}
+/* OVERLAY */
 
 .overlay{
 position:fixed;
 inset:0;
 background:
-linear-gradient(to bottom,rgba(0,0,0,.4),rgba(0,0,0,.95)),
-radial-gradient(circle at top,#d4af3720 0%,transparent 40%);
-z-index:-2;
-mix-blend-mode:screen;
+linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.96)),
+radial-gradient(circle at top,#d4af3715 0%,transparent 45%);
+z-index:-1;
 }
+
+/* SIDEBAR */
 
 .sidebar{
 position:fixed;
 left:0;
 top:0;
-width:78px;
+width:82px;
 height:100vh;
-background:rgba(0,0,0,.75);
-backdrop-filter:blur(12px);
-border-right:1px solid rgba(212,175,55,.2);
+background:rgba(0,0,0,.7);
+backdrop-filter:blur(14px);
+border-right:1px solid rgba(212,175,55,.18);
 display:flex;
 flex-direction:column;
 align-items:center;
-padding-top:20px;
+padding-top:18px;
 z-index:999;
-border-top-right-radius:24px;
-border-bottom-right-radius:24px;
-box-shadow:0 0 40px rgba(0,0,0,.5);
 }
 
 .side-btn{
-width:54px;
-height:54px;
-margin-bottom:16px;
+width:55px;
+height:55px;
 border-radius:18px;
+margin-bottom:16px;
 display:flex;
 align-items:center;
 justify-content:center;
+background:#101010;
+border:1px solid rgba(212,175,55,.18);
 font-size:24px;
-background:#0f0f0f;
-border:1px solid rgba(212,175,55,.2);
 color:#d4af37;
-transition:.3s;
 text-decoration:none;
+transition:.3s;
 cursor:pointer;
 }
 
 .side-btn:hover{
-transform:translateY(-3px);
 background:#d4af37;
-color:#000;
-box-shadow:0 0 20px rgba(212,175,55,.45);
+color:black;
+transform:translateY(-4px);
+box-shadow:0 0 25px rgba(212,175,55,.5);
 }
 
+/* MAIN */
+
 .main{
-padding-left:95px;
-padding-right:18px;
+padding-left:100px;
+padding-right:20px;
 }
+
+/* HERO */
 
 .hero{
 min-height:100vh;
@@ -132,51 +111,45 @@ display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-position:relative;
 padding-top:40px;
 }
 
 .hero-box{
 max-width:760px;
 animation:fadeUp 1s ease;
-backdrop-filter:blur(4px);
 }
 
 .logo{
-width:300px;
+width:280px;
 max-width:90%;
-margin-bottom:25px;
-opacity:.95;
-filter:drop-shadow(0 0 25px rgba(212,175,55,.4));
+margin-bottom:20px;
+filter:drop-shadow(0 0 30px rgba(212,175,55,.35));
 animation:float 4s ease-in-out infinite;
 }
 
 .kicker{
 letter-spacing:4px;
+font-size:12px;
 color:#d4af37;
-font-size:13px;
-margin-bottom:12px;
+margin-bottom:14px;
 }
 
 .hero h1{
 font-family:'Cinzel',serif;
-font-size:68px;
+font-size:70px;
 line-height:1;
 margin-bottom:18px;
-letter-spacing:2px;
-text-shadow:
-0 0 15px rgba(212,175,55,.25),
-0 0 35px rgba(212,175,55,.15);
+text-transform:uppercase;
 }
 
 .sub{
-font-size:18px;
 color:#d7d7d7;
-max-width:520px;
-margin:auto;
+font-size:18px;
 line-height:1.6;
-margin-bottom:28px;
+margin-bottom:30px;
 }
+
+/* BOTON */
 
 .btn{
 display:inline-flex;
@@ -186,31 +159,31 @@ padding:18px 34px;
 border-radius:18px;
 background:linear-gradient(
 135deg,
-#f8e08a 0%,
-#d4af37 40%,
-#9f6b00 100%
+#f7df88 0%,
+#d4af37 45%,
+#8f6200 100%
 );
-color:#000;
+color:black;
 font-weight:700;
 letter-spacing:1px;
 text-decoration:none;
 font-size:17px;
 border:none;
 cursor:pointer;
-box-shadow:
-0 0 20px rgba(212,175,55,.45),
-0 0 45px rgba(212,175,55,.18);
 transition:.3s;
-position:relative;
-overflow:hidden;
+box-shadow:
+0 0 25px rgba(212,175,55,.4),
+0 0 60px rgba(212,175,55,.15);
 }
 
 .btn:hover{
 transform:translateY(-4px) scale(1.03);
 box-shadow:
-0 0 35px rgba(212,175,55,.75),
-0 0 70px rgba(212,175,55,.25);
+0 0 40px rgba(212,175,55,.7),
+0 0 80px rgba(212,175,55,.2);
 }
+
+/* CARDS */
 
 .cards{
 display:grid;
@@ -220,22 +193,22 @@ margin-top:35px;
 }
 
 .card{
-background:rgba(15,15,15,.55);
-backdrop-filter:blur(18px);
-border:1px solid rgba(255,255,255,.08);
+background:rgba(15,15,15,.6);
+backdrop-filter:blur(16px);
+border:1px solid rgba(255,255,255,.06);
 border-radius:28px;
 padding:24px;
 transition:.35s;
 box-shadow:
-0 0 40px rgba(0,0,0,.45),
-0 0 25px rgba(212,175,55,.08);
+0 0 35px rgba(0,0,0,.45),
+0 0 25px rgba(212,175,55,.05);
 }
 
 .card:hover{
-transform:translateY(-8px) scale(1.02);
+transform:translateY(-8px);
 border-color:#d4af37;
 box-shadow:
-0 0 45px rgba(212,175,55,.18),
+0 0 45px rgba(212,175,55,.14),
 0 0 60px rgba(0,0,0,.6);
 }
 
@@ -245,70 +218,110 @@ margin-bottom:10px;
 font-size:20px;
 }
 
+/* SECTION */
+
 .section{
 padding:70px 0;
 }
 
 .title{
-font-size:38px;
 font-family:'Cinzel',serif;
+font-size:38px;
 margin-bottom:25px;
 text-align:center;
 }
 
+/* GALERIA */
+
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
 gap:18px;
 }
 
-.gallery video{
+.gallery img{
 width:100%;
-height:340px;
+height:330px;
 object-fit:cover;
 border-radius:24px;
-border:1px solid rgba(212,175,55,.2);
+border:1px solid rgba(212,175,55,.15);
+transition:.4s;
 }
+
+.gallery img:hover{
+transform:scale(1.03);
+box-shadow:
+0 0 30px rgba(212,175,55,.25),
+0 0 60px rgba(0,0,0,.5);
+}
+
+/* RESERVA */
 
 .booking{
 background:rgba(10,10,10,.82);
 padding:35px;
 border-radius:28px;
-border:1px solid rgba(212,175,55,.18);
-max-width:700px;
+border:1px solid rgba(212,175,55,.15);
+max-width:750px;
 margin:auto;
 }
 
 .input,
-select,
-button{
+select{
 width:100%;
 padding:18px;
 margin-bottom:15px;
 border:none;
 border-radius:18px;
-font-size:16px;
-background:#141414;
+background:#131313;
 color:white;
+font-size:16px;
 }
 
-button{
-background:linear-gradient(135deg,#f1d06b,#b8891d);
-color:black;
-font-weight:bold;
+.hours{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(110px,1fr));
+gap:12px;
+margin-top:18px;
+margin-bottom:20px;
+}
+
+.slot{
+padding:14px;
+border-radius:14px;
+background:#111;
+border:1px solid rgba(212,175,55,.12);
+text-align:center;
 cursor:pointer;
 transition:.3s;
 }
 
-button:hover{
-transform:translateY(-3px);
+.slot:hover{
+background:#d4af37;
+color:black;
 }
 
-.footer{
-text-align:center;
-padding:40px 0;
-color:#999;
+.slot.active{
+background:#d4af37;
+color:black;
+font-weight:bold;
 }
+
+.slot.busy{
+opacity:.35;
+pointer-events:none;
+text-decoration:line-through;
+}
+
+/* FOOTER */
+
+.footer{
+padding:40px 0;
+text-align:center;
+color:#888;
+}
+
+/* ANIMACIONES */
 
 @keyframes float{
 0%{transform:translateY(0)}
@@ -327,18 +340,20 @@ transform:translateY(0);
 }
 }
 
+/* RESPONSIVE */
+
 @media(max-width:900px){
 
 .sidebar{
-width:64px;
+width:68px;
 }
 
 .main{
-padding-left:78px;
+padding-left:82px;
 }
 
 .hero h1{
-font-size:46px;
+font-size:48px;
 }
 
 .logo{
@@ -353,21 +368,16 @@ font-size:15px;
 
 </style>
 </head>
+
 <body>
 
-<div class="loader" id="loader">
-
-<img src="logo.png" class="loader-logo">
-
-<h1>THE BOCHA</h1>
-
+<div class="bg-logo">
+<img src="logo.png">
 </div>
 
-<video class="video-bg" autoplay muted loop playsinline>
-<source src="video.mp4" type="video/mp4">
-</video>
-
 <div class="overlay"></div>
+
+<!-- SIDEBAR -->
 
 <div class="sidebar">
 
@@ -375,15 +385,17 @@ font-size:15px;
 
 <a class="side-btn" href="#turnos">💈</a>
 
-<a class="side-btn" href="https://instagram.com/The.bocha">📸</a>
-
 <a class="side-btn" href="#admin">🔥</a>
+
+<a class="side-btn" href="https://instagram.com/The.bocha">📸</a>
 
 <a class="side-btn" href="https://wa.me/5493835692337">📍</a>
 
 </div>
 
 <div class="main">
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -396,17 +408,15 @@ PREMIUM BARBER EXPERIENCE
 </div>
 
 <h1>
-Studio<br>
-the bocha
+THE BOCHA
 </h1>
 
 <p class="sub">
-Más que un corte.
-Es actitud, presencia y experiencia premium.
+Más que un corte. Una experiencia premium.
 </p>
 
 <a href="#turnos" class="btn">
-📅 RESERVAR TURNO
+RESERVAR TURNO 🔥
 </a>
 
 <div class="cards">
@@ -417,13 +427,13 @@ Es actitud, presencia y experiencia premium.
 </div>
 
 <div class="card">
-<h3>💈 Precios</h3>
-<p>Corte $10.000</p>
+<h3>💈 Corte</h3>
+<p>$10.000</p>
 </div>
 
 <div class="card">
-<h3>⭐ Cliente fiel</h3>
-<p>Beneficios exclusivos</p>
+<h3>⭐ Clientes</h3>
+<p>Atención premium</p>
 </div>
 
 </div>
@@ -431,76 +441,73 @@ Es actitud, presencia y experiencia premium.
 </div>
 
 </section>
+
+<!-- GALERIA -->
 
 <section class="section">
 
 <h2 class="title">
-Estilos
+Trabajos
 </h2>
 
 <div class="gallery">
 
-<video autoplay muted loop playsinline>
-<source src="video1.mp4" type="video/mp4">
-</video>
+<img src="foto1.jpg">
 
-<video autoplay muted loop playsinline>
-<source src="video2.mp4" type="video/mp4">
-</video>
+<img src="foto2.jpg">
 
-<video autoplay muted loop playsinline>
-<source src="video3.mp4" type="video/mp4">
-</video>
+<img src="foto3.jpg">
 
 </div>
 
 </section>
 
+<!-- TURNOS -->
+
 <section class="section" id="turnos">
 
 <h2 class="title">
-Reservar turno
+Reservar Turno
 </h2>
 
 <div class="booking">
 
-<input class="input" placeholder="Tu nombre">
+<input
+id="name"
+class="input"
+placeholder="Tu nombre"
+>
 
-<select>
+<select id="service">
+
 <option>💈 Corte</option>
-<option>🧔 Barba</option>
-<option>🔥 Combo</option>
+<option>🧔 Corte + Barba</option>
+<option>🔥 Premium</option>
+
 </select>
 
-<select>
-  
+<select id="day">
+
 <option>Lunes</option>
 <option>Martes</option>
 <option>Miércoles</option>
 <option>Jueves</option>
 <option>Viernes</option>
 <option>Sábado</option>
-  
+
 </select>
-  
-<div class="hour">09:30</div>
-<div class="hour">10:30</div>
-<div class="hour">11:30</div>
-<div class="hour">12:30</div>
-<div class="hour">15:30</div>
-<div class="hour">16:30</div>
-<div class="hour">17:30</div>
-<div class="hour">18:30</div>
-<div class="hour">19:30</div>
-<div class="hour">20:30</div>
-<div class="hour">21:30</div>
-<button>
-CONFIRMAR RESERVA 🔥
+
+<div class="hours" id="slots"></div>
+
+<button class="btn" id="btn">
+CONFIRMAR RESERVA
 </button>
 
 </div>
 
 </section>
+
+<!-- ADMIN -->
 
 <section class="section" id="admin">
 
@@ -512,17 +519,17 @@ Panel Admin
 
 <div class="card">
 <h3>📅 Turnos Hoy</h3>
-<p>12</p>
+<p id="adminTurnos">0</p>
 </div>
 
 <div class="card">
 <h3>💰 Ganancia</h3>
-<p>$120.000 esta semana</p>
+<p id="adminMoney">$0</p>
 </div>
 
 <div class="card">
 <h3>🔥 Clientes</h3>
-<p>28 clientes frecuentes</p>
+<p id="adminClientes">0</p>
 </div>
 
 </div>
@@ -535,76 +542,204 @@ The Bocha © Premium Barber Studio
 
 </div>
 
-<script>
+<!-- FIREBASE -->
 
-setTimeout(()=>{
-document.getElementById('loader').style.display='none';
-},3000);
-
-</script>
 <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
 import {
 getFirestore,
 collection,
+addDoc,
 getDocs
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+/* PEGA TUS DATOS FIREBASE */
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBzBRXDzCmNkEPxAmsPGMBgbKVipSOIkaE",
-  authDomain: "the-bocha.firebaseapp.com",
-  projectId: "the-bocha",
-  storageBucket: "the-bocha.firebasestorage.app",
-  messagingSenderId: "284110596241",
-  appId: "1:284110596241:web:f39e4c03f3c3eabb1cb730",
-  measurementId: "G-611QY6BNJB"
+
+apiKey: "TU_API_KEY",
+
+authDomain: "TU_AUTH_DOMAIN",
+
+projectId: "TU_PROJECT_ID",
+
+storageBucket: "TU_STORAGE_BUCKET",
+
+messagingSenderId: "TU_MESSAGING_ID",
+
+appId: "TU_APP_ID"
+
 };
 
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-async function cargarPanel(){
+/* HORARIOS */
+
+const horarios = [
+
+"09:30",
+"10:30",
+"11:30",
+"12:30",
+"15:30",
+"16:30",
+"17:30",
+"18:30",
+"19:30",
+"20:30",
+"21:30"
+
+];
+
+const slots = document.getElementById("slots");
+
+const dayEl = document.getElementById("day");
+
+let selected = null;
+
+/* CARGAR */
+
+async function cargar(){
+
+selected = null;
+
+const dia = dayEl.value;
 
 const snapshot = await getDocs(
 collection(db,"turnos")
 );
 
-const totalTurnos = snapshot.size;
+const ocupados = snapshot.docs
+.map(doc => doc.data())
+.filter(t => t.day === dia)
+.map(t => t.time);
 
-document.querySelector(
-"#admin .card:nth-child(1) p"
-).textContent = totalTurnos + " turnos";
+slots.innerHTML = "";
 
-document.querySelector(
-"#admin .card:nth-child(2) p"
-).textContent =
-"$" + (totalTurnos * 10000);
+horarios.forEach(h=>{
 
-document.querySelector(
-"#admin .card:nth-child(3) p"
-).textContent =
-Math.floor(totalTurnos * 0.7) +
-" clientes frecuentes";
+const div = document.createElement("div");
+
+div.className = "slot";
+
+div.textContent = h;
+
+if(ocupados.includes(h)){
+
+div.classList.add("busy");
+
+div.textContent = h + " ❌";
+
+}else{
+
+div.onclick = ()=>{
+
+document
+.querySelectorAll(".slot")
+.forEach(x=>x.classList.remove("active"));
+
+div.classList.add("active");
+
+selected = h;
+
+};
 
 }
 
-cargarPanel();
-
-const botonReserva = document.querySelector(".btn");
-
-botonReserva.addEventListener("click",()=>{
-
-document.getElementById("turnos")
-.scrollIntoView({
-behavior:"smooth"
-});
+slots.appendChild(div);
 
 });
+
+/* PANEL ADMIN */
+
+document.getElementById(
+"adminTurnos"
+).textContent = snapshot.size;
+
+document.getElementById(
+"adminMoney"
+).textContent =
+"$" + (snapshot.size * 10000);
+
+document.getElementById(
+"adminClientes"
+).textContent =
+Math.floor(snapshot.size * 0.7);
+
+}
+
+cargar();
+
+dayEl.onchange = cargar;
+
+/* RESERVA */
+
+document.getElementById(
+"btn"
+).onclick = async ()=>{
+
+const name =
+document.getElementById("name")
+.value.trim();
+
+const service =
+document.getElementById("service")
+.value;
+
+const day =
+document.getElementById("day")
+.value;
+
+if(!name){
+alert("Poné tu nombre");
+return;
+}
+
+if(!selected){
+alert("Elegí un horario");
+return;
+}
+
+await addDoc(
+collection(db,"turnos"),
+{
+name,
+service,
+day,
+time:selected,
+createdAt:Date.now()
+}
+);
+
+await cargar();
+
+const msg =
+"Hola The Bocha 💈, soy " +
+name +
+". Reservé " +
+service +
+" para " +
+day +
+" a las " +
+selected;
+
+window.open(
+"https://wa.me/5493835692337?text=" +
+encodeURIComponent(msg),
+"_blank"
+);
+
+alert("Turno reservado 🔥");
+
+};
 
 </script>
+
 </body>
 </html>
