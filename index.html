@@ -1,5 +1,3 @@
-<!-- REEMPLAZÁ TODO TU index.html POR ESTE BLOQUE -->
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -130,11 +128,27 @@ padding-top:40px;
 text-align:center;
 }
 
+/* REEMPLAZÁ TODO EL BLOQUE .logo POR ESTE */
+
 .logo{
-width:520px;
-max-width:100%;
+width:420px;
+max-width:92%;
+object-fit:contain;
+display:block;
+margin:auto;
 filter:drop-shadow(0 0 40px rgba(212,175,55,.45));
 animation:float 4s ease-in-out infinite;
+}
+
+/* Y REEMPLAZÁ EL .logo DEL RESPONSIVE POR ESTE */
+
+@media(max-width:900px){
+
+.logo{
+width:280px;
+max-width:90%;
+}
+
 }
 
 @keyframes float{
