@@ -3,1187 +3,351 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Studio The Bocha</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Oswald:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-}
-
-body{
-background:#020202;
-color:white;
-font-family:'Oswald',sans-serif;
-overflow-x:hidden;
-}
-
-/* FONDO */
-
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at left,#d4af3722,transparent 35%),
-radial-gradient(circle at top,#d4af3718,transparent 35%),
-#020202;
-z-index:-5;
-}
-
-.smoke{
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at 20% 20%,#d4af3735,transparent 20%),
-radial-gradient(circle at 15% 70%,#d4af371c,transparent 25%);
-filter:blur(35px);
-z-index:-4;
-animation:smoke 8s infinite alternate;
-}
-
-@keyframes smoke{
-from{
-transform:translateY(0);
-}
-to{
-transform:translateY(-30px);
-}
-}
-
-/* SIDEBAR */
-
-.sidebar{
-position:fixed;
-left:0;
-top:0;
-width:95px;
-height:100vh;
-background:rgba(0,0,0,.84);
-border-right:1px solid #b8891d;
-z-index:20;
-display:flex;
-flex-direction:column;
-align-items:center;
-padding-top:22px;
-gap:16px;
-}
-
-.side{
-width:68px;
-height:68px;
-border:1px solid #b8891d;
-border-radius:18px;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-text-decoration:none;
-background:#070707;
-color:#d4af37;
-font-size:22px;
-transition:.3s;
-}
-
-.side span{
-font-size:10px;
-margin-top:4px;
-color:white;
-}
-
-.side:hover{
-transform:translateY(-4px);
-background:#d4af37;
-color:black;
-box-shadow:0 0 25px rgba(212,175,55,.45);
-}
-
-/* MAIN */
-
-.main{
-padding-left:120px;
-padding-right:20px;
-max-width:1300px;
-margin:auto;
-}
-
-/* HERO */
-
-.hero{
-min-height:75vh;
-display:grid;
-grid-template-columns:1fr 300px;
-gap:28px;
-align-items:center;
-padding-top:40px;
-}
-
-.logoBox{
-text-align:center;
-}
-
-/* REEMPLAZÁ TODO EL BLOQUE .logo POR ESTE */
-
-.logo{
-width:420px;
-max-width:92%;
-object-fit:contain;
-display:block;
-margin:auto;
-filter:drop-shadow(0 0 40px rgba(212,175,55,.45));
-animation:float 4s ease-in-out infinite;
-}
-
-/* Y REEMPLAZÁ EL .logo DEL RESPONSIVE POR ESTE */
-
-@media(max-width:900px){
-
-.logo{
-width:280px;
-max-width:90%;
-}
-
-}
-
-@keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
-100%{transform:translateY(0)}
-}
-
-.stars{
-color:#d4af37;
-font-size:24px;
-margin:10px 0;
-}
-
-.slogan{
-font-size:30px;
-font-weight:700;
-line-height:1.4;
-}
-
-.gold{
-color:#d4af37;
-}
-
-/* CARDS */
-
-.priceCards{
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-.price{
-border:1px solid #b8891d;
-border-radius:18px;
-padding:22px;
-background:rgba(0,0,0,.58);
-}
-
-.price h3{
-color:#d4af37;
-font-size:18px;
-margin-bottom:8px;
-}
-
-.price p{
-font-size:25px;
-}
-
-/* PANEL */
-
-.panel{
-border:1px solid #b8891d;
-border-radius:24px;
-background:rgba(5,5,5,.82);
-padding:25px;
-margin-bottom:28px;
-box-shadow:0 0 35px rgba(0,0,0,.5);
-}
-
-/* TURNOS */
-
-.booking{
-display:grid;
-grid-template-columns:360px 1fr;
-gap:25px;
-}
-
-.title{
-color:#d4af37;
-font-family:'Cinzel',serif;
-font-size:28px;
-margin-bottom:15px;
-}
-
-.input,
-select,
-textarea{
-width:100%;
-padding:16px;
-margin-bottom:14px;
-border-radius:12px;
-border:1px solid #b8891d;
-background:#090909;
-color:white;
-font-size:16px;
-}
-
-button,
-.btn{
-width:100%;
-padding:16px;
-border:none;
-border-radius:12px;
-background:
-linear-gradient(
-135deg,
-#ffe28a,
-#d4af37,
-#9b6900
-);
-font-weight:800;
-color:black;
-font-size:16px;
-cursor:pointer;
-text-decoration:none;
-display:block;
-text-align:center;
-transition:.3s;
-}
-
-button:hover,
-.btn:hover{
-transform:translateY(-3px);
-box-shadow:0 0 25px rgba(212,175,55,.45);
-}
-
-/* HORARIOS */
-
-.hours{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
-}
-
-.slot{
-padding:16px;
-border:1px solid #b8891d;
-border-radius:12px;
-text-align:center;
-background:#080808;
-color:#f2d06a;
-font-size:20px;
-cursor:pointer;
-transition:.25s;
-}
-
-.slot:hover{
-background:#d4af37;
-color:black;
-}
-
-.slot.active{
-background:#d4af37;
-color:black;
-font-weight:800;
-}
-
-.slot.busy{
-opacity:.35;
-pointer-events:none;
-background:#1b1b1b;
-text-decoration:line-through;
-}
-
-/* GALERIA */
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:12px;
-}
-
-.gallery img{
-width:100%;
-height:180px;
-object-fit:cover;
-border-radius:14px;
-border:1px solid #b8891d;
-}
-
-/* INFO */
-
-.infoGrid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px;
-}
-
-.info{
-border-right:1px solid #7c5b17;
-padding:10px 20px;
-}
-
-.info:last-child{
-border:none;
-}
-
-.info h3{
-color:#d4af37;
-font-size:22px;
-margin-bottom:10px;
-}
-
-/* ADMIN */
-
-.adminPanel{
-display:none;
-margin-top:20px;
-}
-
-.reservaItem{
-padding:12px 0;
-border-bottom:1px solid #333;
-}
-
-/* FOOTER */
-
-.footer{
-text-align:center;
-color:#aaa;
-padding:30px;
-}
-
-.firma{
-text-align:right;
-color:#d4af37;
-font-family:'Cinzel';
-font-size:30px;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:900px){
-
-.sidebar{
-width:72px;
-}
-
-.side{
-width:55px;
-height:55px;
-font-size:18px;
-}
-
-.side span{
-font-size:8px;
-}
-
-.main{
-padding-left:85px;
-padding-right:12px;
-}
-
-.hero{
-grid-template-columns:1fr;
-}
-
-.booking{
-grid-template-columns:1fr;
-}
-
-.hours{
-grid-template-columns:repeat(2,1fr);
-}
-
-.gallery{
-grid-template-columns:repeat(2,1fr);
-}
-
-.infoGrid{
-grid-template-columns:1fr;
-}
-
-.info{
-border:none;
-border-bottom:1px solid #7c5b17;
-}
-
-.logo{
-width:320px;
-}
-
-.slogan{
-font-size:22px;
-}
-
-}
-
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{background:#020202;color:white;font-family:'Oswald',sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at left,#d4af3722,transparent 35%),radial-gradient(circle at top,#d4af3718,transparent 35%),#020202;z-index:-5}
+.smoke{position:fixed;inset:0;background:radial-gradient(circle at 20% 20%,#d4af3735,transparent 20%),radial-gradient(circle at 15% 70%,#d4af371c,transparent 25%);filter:blur(35px);z-index:-4;animation:smoke 8s infinite alternate}
+@keyframes smoke{from{transform:translateY(0)}to{transform:translateY(-30px)}}
+.sidebar{position:fixed;left:0;top:0;width:95px;height:100vh;background:rgba(0,0,0,.84);border-right:1px solid #b8891d;z-index:20;display:flex;flex-direction:column;align-items:center;padding-top:22px;gap:16px}
+.side{width:68px;height:68px;border:1px solid #b8891d;border-radius:18px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-decoration:none;background:#070707;color:#d4af37;font-size:22px;transition:.3s}
+.side span{font-size:10px;margin-top:4px;color:white}.side:hover{transform:translateY(-4px);background:#d4af37;color:black;box-shadow:0 0 25px rgba(212,175,55,.45)}
+.main{padding-left:120px;padding-right:20px;max-width:1300px;margin:auto}
+.hero{min-height:75vh;display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:center;padding-top:40px}
+.logoBox{text-align:center}.logo{width:420px;max-width:92%;object-fit:contain;display:block;margin:auto;filter:drop-shadow(0 0 40px rgba(212,175,55,.45));animation:float 4s ease-in-out infinite}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+.stars{color:#d4af37;font-size:24px;margin:10px 0}.slogan{font-size:30px;font-weight:700;line-height:1.4}.gold{color:#d4af37}
+.priceCards{display:flex;flex-direction:column;gap:15px}.price{border:1px solid #b8891d;border-radius:18px;padding:22px;background:rgba(0,0,0,.58)}.price h3{color:#d4af37;font-size:18px;margin-bottom:8px}.price p{font-size:23px}
+.panel{border:1px solid #b8891d;border-radius:24px;background:rgba(5,5,5,.82);padding:25px;margin-bottom:28px;box-shadow:0 0 35px rgba(0,0,0,.5)}
+.booking{display:grid;grid-template-columns:360px 1fr;gap:25px}.title{color:#d4af37;font-family:'Cinzel',serif;font-size:28px;margin-bottom:15px}
+.input,select,textarea{width:100%;padding:16px;margin-bottom:14px;border-radius:12px;border:1px solid #b8891d;background:#090909;color:white;font-size:16px}
+button,.btn{width:100%;padding:16px;border:none;border-radius:12px;background:linear-gradient(135deg,#ffe28a,#d4af37,#9b6900);font-weight:800;color:black;font-size:16px;cursor:pointer;text-decoration:none;display:block;text-align:center;transition:.3s}
+button:hover,.btn:hover{transform:translateY(-3px);box-shadow:0 0 25px rgba(212,175,55,.45)}
+.hours{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.slot{padding:16px;border:1px solid #b8891d;border-radius:12px;text-align:center;background:#080808;color:#f2d06a;font-size:20px;cursor:pointer;transition:.25s}
+.slot:hover,.slot.active{background:#d4af37;color:black;font-weight:800}.slot.busy{opacity:.35;pointer-events:none;background:#1b1b1b;text-decoration:line-through}
+.gallery{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.gallery img{width:100%;height:180px;object-fit:cover;border-radius:14px;border:1px solid #b8891d}
+.infoGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.info{border-right:1px solid #7c5b17;padding:10px 20px}.info:last-child{border:none}.info h3{color:#d4af37;font-size:22px;margin-bottom:10px}
+.adminPanel{display:none;margin-top:20px}.reservaItem{padding:12px 0;border-bottom:1px solid #333}
+.footer{text-align:center;color:#aaa;padding:30px}.firma{text-align:right;color:#d4af37;font-family:'Cinzel';font-size:30px}
+@media(max-width:900px){.sidebar{width:72px}.side{width:55px;height:55px;font-size:18px}.side span{font-size:8px}.main{padding-left:85px;padding-right:12px}.hero,.booking{grid-template-columns:1fr}.hours,.gallery{grid-template-columns:repeat(2,1fr)}.infoGrid{grid-template-columns:1fr}.info{border:none;border-bottom:1px solid #7c5b17}.logo{width:280px;max-width:90%}.slogan{font-size:22px}}
 </style>
 </head>
 
 <body>
-
 <div class="smoke"></div>
 
 <div class="sidebar">
-
-<a class="side" href="#">
-<div>☰</div>
-</a>
-
-<a class="side" href="#">
-<div>👑</div>
-<span>INICIO</span>
-</a>
-
-<a class="side" href="#turnos">
-<div>💈</div>
-<span>RESERVAR</span>
-</a>
-
-<a class="side" href="#galeria">
-<div>🖼️</div>
-<span>GALERÍA</span>
-</a>
-
-<a class="side" href="https://wa.me/5493835692337">
-<div>🟢</div>
-<span>WHATSAPP</span>
-</a>
-
+<a class="side" href="#"><div>☰</div></a>
+<a class="side" href="#"><div>👑</div><span>INICIO</span></a>
+<a class="side" href="#turnos"><div>💈</div><span>RESERVAR</span></a>
+<a class="side" href="#galeria"><div>🖼️</div><span>GALERÍA</span></a>
+<a class="side" id="instagramLink" href="https://instagram.com/The.bocha"><div>📸</div><span>INSTAGRAM</span></a>
+<a class="side" href="#admin"><div>🔒</div><span>ADMIN</span></a>
 </div>
 
 <div class="main">
 
-<!-- HERO -->
-
 <section class="hero">
-
 <div class="logoBox">
-
-<img src="logo.png" class="logo">
-
-<div class="stars">
-★★★★★
-</div>
-
-<div class="slogan">
-HECHO CON DETALLE,
-<br>
-<span class="gold">
-LLEVADO CON PRESENCIA.
-</span>
-</div>
-
+<img id="mainLogo" src="logo.png" class="logo">
+<div class="stars">★★★★★</div>
+<div class="slogan">HECHO CON DETALLE,<br><span class="gold">LLEVADO CON PRESENCIA.</span></div>
 </div>
 
 <div class="priceCards">
-
-<a href="#turnos" class="btn">
-📅 Reservar ahora
-</a>
-
-<div class="price">
-<h3>✂️ CORTE</h3>
-<p>$10.000</p>
+<a href="#turnos" class="btn">📅 Reservar ahora</a>
+<div class="price"><h3>✂️ CORTE</h3><p id="priceCorte">$10.000</p></div>
+<div class="price"><h3>🧔 BARBA</h3><p id="priceBarba">$2.000</p></div>
+<div class="price"><h3>👑 COMBO</h3><p id="priceCombo">$12.000</p></div>
+<div class="price"><h3>🎁 CLIENTE FIEL</h3><p>6 cortes<br>1 corte gratis</p></div>
 </div>
-
-<div class="price">
-<h3>🧔 BARBA</h3>
-<p>$2.000</p>
-</div>
-
-<div class="price">
-<h3>👑 COMBO</h3>
-<p>$12.000</p>
-</div>
-
-<div class="price">
-<h3>🎁 CLIENTE FIEL</h3>
-<p>
-6 cortes
-<br>
-1 corte gratis
-</p>
-</div>
-
-</div>
-
 </section>
-
-<!-- TURNOS -->
 
 <section class="panel" id="turnos">
-
 <div class="booking">
-
 <div>
-
-<h2 class="title">
-📅 RESERVÁ TU TURNO
-</h2>
-
-<input
-id="name"
-class="input"
-placeholder="Tu nombre"
->
-
-<select id="service">
-
-<option value="Corte">
-💈 Corte - $10.000
-</option>
-
-<option value="Barba">
-🧔 Barba - $2.000
-</option>
-
-<option value="Combo">
-👑 Combo - $12.000
-</option>
-
-</select>
-
+<h2 class="title">📅 RESERVÁ TU TURNO</h2>
+<input id="name" class="input" placeholder="Tu nombre">
+<select id="service"></select>
 <select id="day">
-
-<option>Lunes</option>
-<option>Martes</option>
-<option>Miércoles</option>
-<option>Jueves</option>
-<option>Viernes</option>
-<option>Sábado</option>
-
+<option>Lunes</option><option>Martes</option><option>Miércoles</option>
+<option>Jueves</option><option>Viernes</option><option>Sábado</option>
 </select>
-
-<button id="btn">
-CONFIRMAR TURNO
-</button>
-
+<button id="btn">CONFIRMAR TURNO</button>
 <br>
-
-<a
-href="tel:+5493835692337"
-class="btn"
-style="background:#111;color:#d4af37;border:1px solid #b8891d"
->
-📞 CANCELAR TURNO / LLAMAR
-</a>
-
+<a href="tel:+5493835692337" class="btn" style="background:#111;color:#d4af37;border:1px solid #b8891d">📞 CANCELAR TURNO / LLAMAR</a>
+<p id="cancelTextPublic" style="margin-top:12px;color:#bbb"></p>
 </div>
-
-<div>
-
-<div id="slots" class="hours"></div>
-
+<div><div id="slots" class="hours"></div></div>
 </div>
-
-</div>
-
 </section>
-
-<!-- GALERIA -->
 
 <section class="panel" id="galeria">
-
-<h2 class="title" style="text-align:center">
-✂️ NUESTROS TRABAJOS ✂️
-</h2>
-
+<h2 class="title" style="text-align:center">✂️ NUESTROS TRABAJOS ✂️</h2>
 <div class="gallery">
-
-<img src="foto1.jpg">
-<img src="foto2.jpg">
-<img src="foto3.jpg">
-<img src="foto4.jpg">
-<img src="foto5.jpg">
-
+<img id="foto1" src="foto1.jpg">
+<img id="foto2" src="foto2.jpg">
+<img id="foto3" src="foto3.jpg">
+<img id="foto4" src="foto4.jpg">
+<img id="foto5" src="foto5.jpg">
 </div>
-
 </section>
 
-<!-- ADMIN -->
+<section class="panel">
+<div class="infoGrid">
+<div class="info"><h3>📍 UBICACIÓN</h3><p>Barrio Virgen del Carmen<br>Saujil, Pomán</p></div>
+<div class="info"><h3>⏰ HORARIOS</h3><p>Lunes a Sábado<br><span class="gold">09:30 a 13:30</span><br><span class="gold">15:30 a 23:30</span></p></div>
+<div class="info"><h3>💰 PRECIOS</h3><p id="preciosInfo"></p></div>
+<div class="info"><h3>🎁 PROMOS</h3><p>Cliente fiel<br>6 cortes<br>1 corte gratis</p></div>
+</div>
+</section>
 
 <section class="panel" id="admin">
-
-<h2 class="title">
-🔒 ACCESO ADMIN
-</h2>
-
-<div
-style="
-display:grid;
-grid-template-columns:1fr 200px;
-gap:12px;
-"
->
-
-<input
-id="adminPass"
-class="input"
-type="password"
-placeholder="Clave admin"
->
-
-<button id="adminLogin">
-ENTRAR
-</button>
-
+<h2 class="title">🔒 ACCESO ADMIN</h2>
+<div style="display:grid;grid-template-columns:1fr 200px;gap:12px">
+<input id="adminPass" class="input" type="password" placeholder="Clave admin">
+<button id="adminLogin">ENTRAR</button>
 </div>
-<!-- SOLO PEGÁ ESTE BLOQUE DENTRO DEL PANEL ADMIN
-REEMPLAZÁ DESDE:
+
 <div class="adminPanel" id="adminPanel">
-HASTA SU </div> FINAL
--->
-
-<div
-class="adminPanel"
-id="adminPanel"
->
-
-<!-- STATS -->
-
-<div
-style="
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-margin-top:20px;
-"
->
-
-<div class="price">
-
-<h3>📅 Turnos</h3>
-
-<p id="adminTurnos">
-0
-</p>
-
-</div>
-
-<div class="price">
-
-<h3>💰 Ganancias</h3>
-
-<p id="adminMoney">
-$0
-</p>
-
-</div>
-
-<div class="price">
-
-<h3>🔥 Reservas</h3>
-
-<p id="adminClientes">
-0
-</p>
-
-</div>
-
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-top:20px">
+<div class="price"><h3>📅 Turnos</h3><p id="adminTurnos">0</p></div>
+<div class="price"><h3>💰 Ganancias</h3><p id="adminMoney">$0</p></div>
+<div class="price"><h3>🔥 Reservas</h3><p id="adminClientes">0</p></div>
 </div>
 
 <br>
 
-<!-- EDITAR INFO -->
-
 <div class="price">
-
-<h3>
-⚙️ Personalizar Web
-</h3>
-
-<input
-id="logoInput"
-class="input"
-placeholder="Nombre logo (ej: logo.png)"
-value="logo.png"
->
-
-<input
-id="instagramInput"
-class="input"
-placeholder="Instagram"
-value="https://instagram.com/The.bocha"
->
-
-<input
-id="foto1Input"
-class="input"
-placeholder="foto1.jpg"
-value="foto1.jpg"
->
-
-<input
-id="foto2Input"
-class="input"
-placeholder="foto2.jpg"
-value="foto2.jpg"
->
-
-<input
-id="foto3Input"
-class="input"
-placeholder="foto3.jpg"
-value="foto3.jpg"
->
-
-<input
-id="foto4Input"
-class="input"
-placeholder="foto4.jpg"
-value="foto4.jpg"
->
-
-<input
-id="foto5Input"
-class="input"
-placeholder="foto5.jpg"
-value="foto5.jpg"
->
-
-<button id="guardarPersonalizacion">
-GUARDAR CAMBIOS 🔥
-</button>
-
+<h3>⚙️ Editar web</h3>
+<input id="logoInput" class="input" placeholder="logo.png">
+<input id="instagramInput" class="input" placeholder="Instagram">
+<input id="foto1Input" class="input" placeholder="foto1.jpg">
+<input id="foto2Input" class="input" placeholder="foto2.jpg">
+<input id="foto3Input" class="input" placeholder="foto3.jpg">
+<input id="foto4Input" class="input" placeholder="foto4.jpg">
+<input id="foto5Input" class="input" placeholder="foto5.jpg">
+<input id="corteInput" class="input" type="number" placeholder="Precio corte">
+<input id="barbaInput" class="input" type="number" placeholder="Precio barba">
+<input id="comboInput" class="input" type="number" placeholder="Precio combo">
+<textarea id="cancelInput" rows="3" placeholder="Mensaje cancelación"></textarea>
+<button id="guardarConfig">GUARDAR CAMBIOS DE LA WEB</button>
 </div>
 
 <br>
 
-<!-- INSTAGRAM -->
-
 <div class="price">
-
-<h3>
-📸 Instagram
-</h3>
-
-<a
-id="instaAdminBtn"
-href="https://instagram.com/The.bocha"
-target="_blank"
-class="btn"
->
-IR A INSTAGRAM
-</a>
-
-</div>
-
-<br>
-
-<!-- RESERVAS -->
-
-<div class="price">
-
-<h3>
-📌 Reservas registradas
-</h3>
-
+<h3>📌 Reservas registradas</h3>
 <div id="listaTurnos"></div>
-
 </div>
-
 </div>
-
-
 </section>
 
-<div class="firma">
-The Bocha
-</div>
-
-<div class="footer">
-© Studio The Bocha
-</div>
-
+<div class="firma">The Bocha</div>
+<div class="footer">© Studio The Bocha</div>
 </div>
 
 <script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-
-import {
-getFirestore,
-collection,
-addDoc,
-getDocs,
-deleteDoc,
-doc
-}
-from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 const firebaseConfig = {
-
 apiKey: "AIzaSyBzBRXDzCmNkEPxAmsPGMBgbKVipSOIkaE",
-
 authDomain: "the-bocha.firebaseapp.com",
-
 projectId: "the-bocha",
-
 storageBucket: "the-bocha.firebasestorage.app",
-
 messagingSenderId: "284110596241",
-
 appId: "1:284110596241:web:f39e4c03f3c3eabb1cb730",
-
 measurementId: "G-611QY6BNJB"
-
 };
 
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore(app);
 
-const horarios = [
-
-"09:30",
-"10:30",
-"11:30",
-"12:30",
-"13:30",
-"15:30",
-"16:30",
-"17:30",
-"18:30",
-"19:30",
-"20:30",
-"21:30",
-"22:30",
-"23:30"
-
-];
-
-const prices = {
-
-Corte:10000,
-Barba:2000,
-Combo:12000
-
+const defaultConfig = {
+logo:"logo.png",
+instagram:"https://instagram.com/The.bocha",
+foto1:"foto1.jpg",
+foto2:"foto2.jpg",
+foto3:"foto3.jpg",
+foto4:"foto4.jpg",
+foto5:"foto5.jpg",
+corte:10000,
+barba:2000,
+combo:12000,
+cancelText:"Para cancelar o cambiar tu turno, llamá a The Bocha. Si no avisás con tiempo, el horario queda reservado igual."
 };
 
-const slots =
-document.getElementById("slots");
-
-const dayEl =
-document.getElementById("day");
-
+let siteConfig = {...defaultConfig};
 let selected = null;
-
 let turnosCache = [];
 
+const horarios = ["09:30","10:30","11:30","12:30","13:30","15:30","16:30","17:30","18:30","19:30","20:30","21:30","22:30","23:30"];
+const slots = document.getElementById("slots");
+const dayEl = document.getElementById("day");
+
+async function cargarConfig(){
+const ref = doc(db,"config","site");
+const snap = await getDoc(ref);
+if(snap.exists()){
+siteConfig = {...defaultConfig,...snap.data()};
+}
+aplicarConfig();
+}
+
+function aplicarConfig(){
+document.getElementById("mainLogo").src = siteConfig.logo;
+["foto1","foto2","foto3","foto4","foto5"].forEach(id=>{
+document.getElementById(id).src = siteConfig[id];
+});
+document.getElementById("instagramLink").href = siteConfig.instagram;
+document.getElementById("priceCorte").textContent = "$" + Number(siteConfig.corte).toLocaleString("es-AR");
+document.getElementById("priceBarba").textContent = "$" + Number(siteConfig.barba).toLocaleString("es-AR");
+document.getElementById("priceCombo").textContent = "$" + Number(siteConfig.combo).toLocaleString("es-AR");
+document.getElementById("preciosInfo").innerHTML =
+"Corte $" + Number(siteConfig.corte).toLocaleString("es-AR") +
+"<br>Barba $" + Number(siteConfig.barba).toLocaleString("es-AR") +
+"<br>Combo $" + Number(siteConfig.combo).toLocaleString("es-AR");
+document.getElementById("cancelTextPublic").textContent = siteConfig.cancelText;
+
+const service = document.getElementById("service");
+service.innerHTML = `
+<option value="Corte">💈 Corte - $${Number(siteConfig.corte).toLocaleString("es-AR")}</option>
+<option value="Barba">🧔 Barba - $${Number(siteConfig.barba).toLocaleString("es-AR")}</option>
+<option value="Combo">👑 Combo - $${Number(siteConfig.combo).toLocaleString("es-AR")}</option>
+`;
+
+document.getElementById("logoInput").value = siteConfig.logo;
+document.getElementById("instagramInput").value = siteConfig.instagram;
+document.getElementById("foto1Input").value = siteConfig.foto1;
+document.getElementById("foto2Input").value = siteConfig.foto2;
+document.getElementById("foto3Input").value = siteConfig.foto3;
+document.getElementById("foto4Input").value = siteConfig.foto4;
+document.getElementById("foto5Input").value = siteConfig.foto5;
+document.getElementById("corteInput").value = siteConfig.corte;
+document.getElementById("barbaInput").value = siteConfig.barba;
+document.getElementById("comboInput").value = siteConfig.combo;
+document.getElementById("cancelInput").value = siteConfig.cancelText;
+}
+
 async function cargar(){
-
 selected = null;
-
 const dia = dayEl.value;
-
-const snap = await getDocs(
-collection(db,"turnos")
-);
-
-turnosCache =
-snap.docs.map(d=>({
-id:d.id,
-...d.data()
-}));
-
-const ocupados =
-turnosCache
-.filter(t=>t.day===dia)
-.map(t=>t.time);
-
+const snap = await getDocs(collection(db,"turnos"));
+turnosCache = snap.docs.map(d=>({id:d.id,...d.data()}));
+const ocupados = turnosCache.filter(t=>t.day===dia).map(t=>t.time);
 slots.innerHTML = "";
 
 horarios.forEach(h=>{
-
-const div =
-document.createElement("div");
-
+const div = document.createElement("div");
 div.className = "slot";
-
-div.textContent =
-ocupados.includes(h)
-? h + " ❌"
-: h;
+div.textContent = ocupados.includes(h) ? h + " ❌" : h;
 
 if(ocupados.includes(h)){
-
 div.classList.add("busy");
-
 }else{
-
 div.onclick = ()=>{
-
-document
-.querySelectorAll(".slot")
-.forEach(x=>
-x.classList.remove("active")
-);
-
+document.querySelectorAll(".slot").forEach(x=>x.classList.remove("active"));
 div.classList.add("active");
-
 selected = h;
-
 };
-
 }
-
 slots.appendChild(div);
-
 });
 
 actualizarAdmin();
 
 document.querySelectorAll(".liberarBtn").forEach(btn=>{
-
 btn.onclick = async ()=>{
-
-const id =
-btn.getAttribute("data-id");
-
-if(confirm("¿Liberar turno?")){
-
-await deleteDoc(
-doc(db,"turnos",id)
-);
-
+const id = btn.getAttribute("data-id");
+if(confirm("¿Liberar este turno?")){
+await deleteDoc(doc(db,"turnos",id));
 alert("Turno liberado ✅");
-
 await cargar();
-
 }
-
 };
-
 });
-
 }
-
-cargar();
 
 dayEl.onchange = cargar;
 
-/* RESERVAR */
+document.getElementById("btn").onclick = async ()=>{
+const name = document.getElementById("name").value.trim();
+const service = document.getElementById("service").value;
+const day = dayEl.value;
 
-document.getElementById(
-"btn"
-).onclick = async ()=>{
+if(!name) return alert("Poné tu nombre");
+if(!selected) return alert("Elegí un horario");
 
-const name =
-document.getElementById(
-"name"
-).value.trim();
+const price = service === "Corte" ? siteConfig.corte : service === "Barba" ? siteConfig.barba : siteConfig.combo;
 
-const service =
-document.getElementById(
-"service"
-).value;
+await addDoc(collection(db,"turnos"),{
+name,service,day,time:selected,price:Number(price),createdAt:Date.now()
+});
 
-const day =
-dayEl.value;
-
-if(!name)
-return alert(
-"Poné tu nombre"
-);
-
-if(!selected)
-return alert(
-"Elegí un horario"
-);
-
-await addDoc(
-collection(db,"turnos"),
-{
-name,
-service,
-day,
-time:selected,
-price:prices[service],
-createdAt:Date.now()
-}
-);
-
-const msg =
-"Hola The Bocha 💈, soy " +
-name +
-". Reservé " +
-service +
-" para " +
-day +
-" a las " +
-selected;
-
-window.open(
-"https://wa.me/5493835692337?text=" +
-encodeURIComponent(msg),
-"_blank"
-);
-
-alert(
-"Turno reservado 🔥"
-);
-
+const msg = "Hola The Bocha 💈, soy " + name + ". Reservé " + service + " para " + day + " a las " + selected + ".";
+window.open("https://wa.me/5493835692337?text=" + encodeURIComponent(msg),"_blank");
+alert("Turno reservado 🔥");
 await cargar();
-
 };
 
-/* ADMIN */
-
 function actualizarAdmin(){
+const total = turnosCache.length;
+const money = turnosCache.reduce((s,t)=>s+(Number(t.price)||0),0);
 
-const total =
-turnosCache.length;
+document.getElementById("adminTurnos").textContent = total;
+document.getElementById("adminMoney").textContent = "$" + money.toLocaleString("es-AR");
+document.getElementById("adminClientes").textContent = total;
 
-const money =
-turnosCache.reduce(
-(s,t)=>
-s+(t.price||10000),
-0
-);
-
-document.getElementById(
-"adminTurnos"
-).textContent = total;
-
-document.getElementById(
-"adminMoney"
-).textContent =
-"$" +
-money.toLocaleString(
-"es-AR"
-);
-
-document.getElementById(
-"adminClientes"
-).textContent =
-total;
-
-const lista =
-document.getElementById(
-"listaTurnos"
-);
-
+const lista = document.getElementById("listaTurnos");
 lista.innerHTML = "";
 
 turnosCache.forEach(t=>{
-
-const p =
-document.createElement("div");
-
-p.className =
-"reservaItem";
-
+const p = document.createElement("div");
+p.className = "reservaItem";
 p.innerHTML =
-"💈 <b>" +
-(t.name||"Cliente") +
-"</b> — " +
-t.service +
-" — " +
-t.day +
-" " +
-t.time +
-"<br><br>" +
-"<button class='liberarBtn' data-id='" +
-t.id +
-"' style='width:auto;padding:10px 14px'>Liberar turno</button>";
-
+"💈 <b>" + (t.name||"Cliente") + "</b> — " +
+t.service + " — " + t.day + " " + t.time +
+"<br><br><a href='tel:+5493835692337' style='color:#d4af37'>📞 Llamar</a> " +
+"<button class='liberarBtn' data-id='" + t.id + "' style='width:auto;padding:10px 14px;margin-left:8px'>Liberar turno</button>";
 lista.appendChild(p);
-
 });
-
 }
 
-/* LOGIN */
-
-document.getElementById(
-"adminLogin"
-).onclick = ()=>{
-
-if(
-document.getElementById(
-"adminPass"
-).value
-=== "bocha123"
-){
-
-document.getElementById(
-"adminPanel"
-).style.display =
-"block";
-
+document.getElementById("adminLogin").onclick = ()=>{
+if(document.getElementById("adminPass").value === "bocha123"){
+document.getElementById("adminPanel").style.display = "block";
 }else{
-
-alert(
-"Clave incorrecta"
-);
-
+alert("Clave incorrecta");
 }
-
 };
-/* PERSONALIZAR WEB */
 
-document.getElementById(
-"guardarPersonalizacion"
-).onclick = ()=>{
-
-const logo =
-document.getElementById(
-"logoInput"
-).value;
-
-document.querySelector(
-".logo"
-).src = logo;
-
-const insta =
-document.getElementById(
-"instagramInput"
-).value;
-
-document.querySelectorAll(
-"a[href*='instagram']"
-).forEach(x=>{
-x.href = insta;
-});
-
-document.getElementById(
-"instaAdminBtn"
-).href = insta;
-
-const fotos = [
-
-document.getElementById("foto1Input").value,
-document.getElementById("foto2Input").value,
-document.getElementById("foto3Input").value,
-document.getElementById("foto4Input").value,
-document.getElementById("foto5Input").value
-
-];
-
-document.querySelectorAll(
-".gallery img"
-).forEach((img,i)=>{
-img.src = fotos[i];
-});
-
-alert(
-"Web actualizada 🔥"
-);
-
+document.getElementById("guardarConfig").onclick = async ()=>{
+siteConfig = {
+logo:document.getElementById("logoInput").value || "logo.png",
+instagram:document.getElementById("instagramInput").value || "https://instagram.com/The.bocha",
+foto1:document.getElementById("foto1Input").value || "foto1.jpg",
+foto2:document.getElementById("foto2Input").value || "foto2.jpg",
+foto3:document.getElementById("foto3Input").value || "foto3.jpg",
+foto4:document.getElementById("foto4Input").value || "foto4.jpg",
+foto5:document.getElementById("foto5Input").value || "foto5.jpg",
+corte:Number(document.getElementById("corteInput").value || 10000),
+barba:Number(document.getElementById("barbaInput").value || 2000),
+combo:Number(document.getElementById("comboInput").value || 12000),
+cancelText:document.getElementById("cancelInput").value || defaultConfig.cancelText
 };
+
+await setDoc(doc(db,"config","site"),siteConfig);
+aplicarConfig();
+alert("Cambios guardados 🔥");
+};
+
+await cargarConfig();
+await cargar();
 </script>
 
 </body>
