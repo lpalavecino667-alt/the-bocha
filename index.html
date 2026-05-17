@@ -1,269 +1,921 @@
+<!-- PEGAR TODO ESTO EN TU index.html -->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Studio The Bocha</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Oswald:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-body{background:#050505;color:white;font-family:'Oswald',sans-serif;overflow-x:hidden}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+background:#050505;
+color:white;
+font-family:'Oswald',sans-serif;
+overflow-x:hidden;
+}
+
+/* FONDO */
+
 body::before{
-content:"";position:fixed;inset:0;z-index:-3;
-background:radial-gradient(circle at top,#d4af3722,transparent 38%),linear-gradient(#000,#050505);
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top,#d4af3720 0%,transparent 40%),
+linear-gradient(#000,#050505);
+z-index:-3;
 }
-.bg-logo{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;opacity:.07;z-index:-2}
-.bg-logo img{width:750px;max-width:95%;filter:drop-shadow(0 0 80px rgba(212,175,55,.45))}
+
+.smoke{
+position:fixed;
+inset:0;
+background:
+url('https://i.imgur.com/u7sYd8B.png');
+background-size:cover;
+opacity:.08;
+mix-blend-mode:screen;
+animation:smokeMove 25s linear infinite;
+z-index:-2;
+}
+
+@keyframes smokeMove{
+0%{transform:scale(1) translateY(0)}
+50%{transform:scale(1.08) translateY(-20px)}
+100%{transform:scale(1) translateY(0)}
+}
+
+.bg-logo{
+position:fixed;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:.06;
+z-index:-1;
+pointer-events:none;
+}
+
+.bg-logo img{
+width:750px;
+max-width:95%;
+filter:drop-shadow(0 0 80px rgba(212,175,55,.35));
+}
+
+/* SIDEBAR */
+
 .sidebar{
-position:fixed;left:0;top:0;width:78px;height:100vh;z-index:50;
-background:rgba(0,0,0,.75);backdrop-filter:blur(18px);
-border-right:1px solid rgba(212,175,55,.22);
-display:flex;flex-direction:column;align-items:center;padding-top:18px
+position:fixed;
+left:0;
+top:0;
+width:88px;
+height:100vh;
+background:rgba(0,0,0,.78);
+backdrop-filter:blur(16px);
+border-right:1px solid rgba(212,175,55,.18);
+display:flex;
+flex-direction:column;
+align-items:center;
+padding-top:18px;
+z-index:999;
 }
+
 .side-btn{
-width:55px;height:55px;margin-bottom:15px;border-radius:18px;
-display:flex;align-items:center;justify-content:center;text-decoration:none;
-font-size:24px;color:#d4af37;background:#101010;border:1px solid rgba(212,175,55,.25);
-transition:.25s;cursor:pointer
+width:58px;
+height:58px;
+border-radius:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:25px;
+background:#101010;
+color:#d4af37;
+border:1px solid rgba(212,175,55,.18);
+margin-bottom:15px;
+text-decoration:none;
+transition:.3s;
 }
-.side-btn:hover{background:#d4af37;color:#000;transform:translateY(-3px);box-shadow:0 0 25px rgba(212,175,55,.55)}
-.main{padding-left:95px;padding-right:20px}
-.hero{min-height:100vh;display:flex;justify-content:center;align-items:center;text-align:center}
-.hero-box{max-width:780px;animation:fadeUp 1s ease}
-.logo{width:290px;max-width:90%;margin-bottom:20px;filter:drop-shadow(0 0 35px rgba(212,175,55,.45));animation:float 4s ease-in-out infinite}
-.kicker{color:#d4af37;letter-spacing:4px;font-size:12px;margin-bottom:14px}
-h1{font-family:'Cinzel',serif;font-size:68px;line-height:1;text-transform:uppercase;text-shadow:0 0 20px rgba(212,175,55,.25)}
-.sub{color:#d8d8d8;font-size:18px;line-height:1.6;margin:22px auto;max-width:520px}
-.btn,button{
-display:inline-flex;justify-content:center;align-items:center;text-decoration:none;
-padding:17px 30px;border-radius:18px;border:none;cursor:pointer;
-background:linear-gradient(135deg,#f8e08a,#d4af37 45%,#8b5f00);
-color:#000;font-weight:800;letter-spacing:1px;font-size:16px;
-box-shadow:0 0 30px rgba(212,175,55,.45);transition:.25s
+
+.side-btn:hover{
+background:#d4af37;
+color:black;
+transform:translateY(-4px);
+box-shadow:0 0 25px rgba(212,175,55,.45);
 }
-.btn:hover,button:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 0 45px rgba(212,175,55,.75)}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:35px}
+
+/* MAIN */
+
+.main{
+padding-left:110px;
+padding-right:20px;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding-top:40px;
+}
+
+.hero-box{
+max-width:850px;
+text-align:center;
+animation:fadeUp 1s ease;
+}
+
+.logo{
+width:380px;
+max-width:90%;
+margin-bottom:18px;
+filter:drop-shadow(0 0 40px rgba(212,175,55,.4));
+animation:float 4s ease-in-out infinite;
+}
+
+.hero h1{
+font-family:'Cinzel',serif;
+font-size:72px;
+line-height:1;
+margin-bottom:16px;
+text-transform:uppercase;
+}
+
+.sub{
+font-size:18px;
+color:#d7d7d7;
+line-height:1.6;
+max-width:540px;
+margin:auto;
+margin-bottom:28px;
+}
+
+.gold{
+color:#d4af37;
+}
+
+/* BOTONES */
+
+.btn,
+button{
+width:100%;
+padding:18px;
+border:none;
+border-radius:18px;
+background:linear-gradient(
+135deg,
+#f7de83 0%,
+#d4af37 45%,
+#8f6200 100%
+);
+color:black;
+font-size:17px;
+font-weight:800;
+cursor:pointer;
+transition:.3s;
+box-shadow:
+0 0 25px rgba(212,175,55,.35);
+}
+
+.btn:hover,
+button:hover{
+transform:translateY(-3px);
+box-shadow:
+0 0 40px rgba(212,175,55,.6);
+}
+
+/* CARDS */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+margin-top:35px;
+}
+
 .card{
-background:rgba(15,15,15,.68);backdrop-filter:blur(18px);
-border:1px solid rgba(212,175,55,.16);border-radius:28px;padding:24px;
-box-shadow:0 0 35px rgba(0,0,0,.55),inset 0 0 18px rgba(255,255,255,.02);
-transition:.25s
+background:rgba(10,10,10,.75);
+backdrop-filter:blur(18px);
+border:1px solid rgba(212,175,55,.15);
+border-radius:28px;
+padding:24px;
+transition:.3s;
 }
-.card:hover{transform:translateY(-5px);border-color:#d4af37;box-shadow:0 0 40px rgba(212,175,55,.18)}
-.card h3{color:#d4af37;margin-bottom:10px}
-.section{padding:70px 0}
-.title{text-align:center;font-family:'Cinzel',serif;font-size:38px;margin-bottom:25px}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
-.gallery img{width:100%;height:340px;object-fit:cover;border-radius:24px;border:1px solid rgba(212,175,55,.18);box-shadow:0 0 25px rgba(0,0,0,.5)}
-.booking{max-width:760px;margin:auto;background:rgba(10,10,10,.82);padding:32px;border-radius:28px;border:1px solid rgba(212,175,55,.18)}
-.input,select{width:100%;padding:17px;margin-bottom:15px;border:none;border-radius:16px;background:#141414;color:white;font-size:16px}
-.hours{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:10px;margin:18px 0}
-.slot{padding:14px;border-radius:14px;background:#111;border:1px solid rgba(212,175,55,.14);text-align:center;cursor:pointer;transition:.2s}
-.slot:hover,.slot.active{background:#d4af37;color:#000;font-weight:bold}
-.slot.busy{opacity:.38;pointer-events:none;text-decoration:line-through;background:#381111;color:#ffb5b5}
-.admin-lock,.admin-panel{max-width:760px;margin:auto}
-.admin-panel{display:none}
-.footer{text-align:center;color:#888;padding:40px 0}
-@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+
+.card:hover{
+transform:translateY(-5px);
+border-color:#d4af37;
+box-shadow:
+0 0 40px rgba(212,175,55,.15);
+}
+
+.card h3{
+color:#d4af37;
+margin-bottom:10px;
+}
+
+/* SECTION */
+
+.section{
+padding:70px 0;
+}
+
+.title{
+font-family:'Cinzel',serif;
+font-size:38px;
+margin-bottom:25px;
+text-align:center;
+}
+
+/* GALERIA */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+}
+
+.gallery img{
+width:100%;
+height:340px;
+object-fit:cover;
+border-radius:24px;
+border:1px solid rgba(212,175,55,.16);
+transition:.35s;
+}
+
+.gallery img:hover{
+transform:scale(1.03);
+box-shadow:
+0 0 35px rgba(212,175,55,.2);
+}
+
+/* TURNOS */
+
+.booking{
+background:rgba(8,8,8,.82);
+padding:35px;
+border-radius:28px;
+border:1px solid rgba(212,175,55,.16);
+max-width:850px;
+margin:auto;
+}
+
+.input,
+select{
+width:100%;
+padding:18px;
+margin-bottom:15px;
+border:none;
+border-radius:18px;
+background:#131313;
+color:white;
+font-size:16px;
+}
+
+.hours{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(100px,1fr));
+gap:12px;
+margin:20px 0;
+}
+
+.slot{
+padding:15px;
+border-radius:16px;
+background:#111;
+border:1px solid rgba(212,175,55,.15);
+text-align:center;
+cursor:pointer;
+transition:.25s;
+}
+
+.slot:hover{
+background:#d4af37;
+color:black;
+}
+
+.slot.active{
+background:#d4af37;
+color:black;
+font-weight:bold;
+}
+
+.slot.busy{
+opacity:.3;
+pointer-events:none;
+text-decoration:line-through;
+background:#300;
+}
+
+/* ADMIN */
+
+.admin-lock{
+max-width:700px;
+margin:auto;
+}
+
+.admin-panel{
+display:none;
+margin-top:25px;
+}
+
+/* FOOTER */
+
+.footer{
+padding:40px 0;
+text-align:center;
+color:#888;
+}
+
+/* ANIMACIONES */
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* RESPONSIVE */
+
 @media(max-width:900px){
-.sidebar{width:64px}.main{padding-left:78px;padding-right:14px}
-h1{font-size:45px}.logo{width:220px}.sub{font-size:15px}
+
+.sidebar{
+width:68px;
 }
+
+.main{
+padding-left:82px;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+.logo{
+width:240px;
+}
+
+.sub{
+font-size:15px;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
 
-<div class="bg-logo"><img src="logo.png"></div>
+<div class="smoke"></div>
+
+<div class="bg-logo">
+<img src="logo.png">
+</div>
+
+<!-- SIDEBAR -->
 
 <div class="sidebar">
-<a class="side-btn" href="#">☰</a>
+
+<a class="side-btn" href="#">👑</a>
+
 <a class="side-btn" href="#turnos">💈</a>
-<a class="side-btn" href="#admin">🔥</a>
+
+<a class="side-btn" href="#galeria">🔥</a>
+
 <a class="side-btn" href="https://instagram.com/The.bocha">📸</a>
+
 <a class="side-btn" href="https://wa.me/5493835692337">📍</a>
+
 </div>
 
 <div class="main">
 
+<!-- HERO -->
+
 <section class="hero">
+
 <div class="hero-box">
+
 <img src="logo.png" class="logo">
-<div class="kicker">PREMIUM BARBER EXPERIENCE</div>
-<h1>Studio<br>The Bocha</h1>
-<p class="sub">Más que un corte. Una experiencia premium con estilo, presencia y detalle.</p>
-<a href="#turnos" class="btn">RESERVAR TURNO 🔥</a>
 
-<div class="cards">
-<div class="card"><h3>📍 Ubicación</h3><p>Barrio Virgen del Carmen</p></div>
-<div class="card"><h3>💈 Corte</h3><p>$10.000</p></div>
-<div class="card"><h3>🎁 Cliente fiel</h3><p>5 cortes = barba gratis<br>10 cortes = corte gratis</p></div>
+<h1>
+Studio<br>
+The Bocha
+</h1>
+
+<p class="sub">
+Hecho con detalle.
+<span class="gold">
+Llevado con presencia.
+</span>
+</p>
+
 </div>
-</div>
+
 </section>
 
-<section class="section">
-<h2 class="title">Trabajos</h2>
-<div class="gallery">
-<img src="foto1.jpg">
-<img src="foto2.jpg">
-<img src="foto3.jpg">
-</div>
-</section>
+<!-- TURNOS -->
 
 <section class="section" id="turnos">
-<h2 class="title">Reservar Turno</h2>
+
+<h2 class="title">
+Reservá tu turno
+</h2>
+
 <div class="booking">
-<input id="name" class="input" placeholder="Tu nombre">
+
+<input
+id="name"
+class="input"
+placeholder="Tu nombre"
+>
+
 <select id="service">
-<option value="Corte">💈 Corte - $10.000</option>
-<option value="Barba">🧔 Barba - $2.000</option>
-<option value="Combo">🔥 Combo - $12.000</option>
+
+<option value="Corte">💈 Corte</option>
+
+<option value="Barba">🧔 Barba</option>
+
+<option value="Combo">🔥 Combo</option>
+
 </select>
+
 <select id="day">
-<option>Lunes</option><option>Martes</option><option>Miércoles</option>
-<option>Jueves</option><option>Viernes</option><option>Sábado</option>
+
+<option>Lunes</option>
+<option>Martes</option>
+<option>Miércoles</option>
+<option>Jueves</option>
+<option>Viernes</option>
+<option>Sábado</option>
+
 </select>
+
 <div class="hours" id="slots"></div>
-<button id="btn">CONFIRMAR RESERVA</button>
+
+<button id="btn">
+CONFIRMAR TURNO
+</button>
+
 </div>
+
 </section>
 
-<section class="section" id="admin">
-<h2 class="title">Panel Admin</h2>
+<!-- GALERIA -->
 
-<div class="admin-lock card">
-<input id="adminPass" class="input" type="password" placeholder="Clave admin">
-<button id="adminLogin">ENTRAR AL PANEL</button>
+<section class="section" id="galeria">
+
+<h2 class="title">
+Nuestros trabajos
+</h2>
+
+<div class="gallery">
+
+<img src="foto1.jpg">
+
+<img src="foto2.jpg">
+
+<img src="foto3.jpg">
+
+<img src="foto4.jpg">
+
+</div>
+
+</section>
+
+<!-- INFO -->
+
+<section class="section">
+
+<div class="cards">
+
+<div class="card">
+
+<h3>📍 Ubicación</h3>
+
+<p>
+Barrio Virgen del Carmen
+<br>
+Saujil, Pomán
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>⏰ Horarios</h3>
+
+<p>
+09:30 a 13:30
+<br>
+15:30 a 23:30
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>💰 Precios</h3>
+
+<p>
+Corte $10.000
+<br>
+Combo $12.000
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>👑 Cliente Fiel</h3>
+
+<p>
+6 cortes
+<br>
+1 corte gratis
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ADMIN -->
+
+<section class="section">
+
+<h2 class="title">
+Acceso Admin
+</h2>
+
+<div class="admin-lock">
+
+<input
+type="password"
+id="adminPass"
+class="input"
+placeholder="Clave administrador"
+>
+
+<button id="adminLogin">
+ENTRAR
+</button>
+
 </div>
 
 <div class="admin-panel" id="adminPanel">
+
 <div class="cards">
-<div class="card"><h3>📅 Turnos</h3><p id="adminTurnos">0</p></div>
-<div class="card"><h3>💰 Ganancia estimada</h3><p id="adminMoney">$0</p></div>
-<div class="card"><h3>🔥 Clientes</h3><p id="adminClientes">0</p></div>
-</div>
-<br>
+
 <div class="card">
-<h3>📌 Reservas registradas</h3>
+
+<h3>📅 Turnos</h3>
+
+<p id="adminTurnos">
+0
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>💰 Ganancias</h3>
+
+<p id="adminMoney">
+$0
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>🔥 Clientes</h3>
+
+<p id="adminClientes">
+0
+</p>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<h3>
+📌 Reservas
+</h3>
+
 <div id="listaTurnos"></div>
+
 </div>
+
 </div>
+
 </section>
 
-<div class="footer">The Bocha © Premium Barber Studio</div>
+<div class="footer">
+Studio The Bocha ©
 </div>
 
+</div>
+
+<!-- FIREBASE -->
+
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBzBRXDzCmNkEPxAmsPGMBgbKVipSOIkaE",
-  authDomain: "the-bocha.firebaseapp.com",
-  projectId: "the-bocha",
-  storageBucket: "the-bocha.firebasestorage.app",
-  messagingSenderId: "284110596241",
-  appId: "1:284110596241:web:f39e4c03f3c3eabb1cb730",
-  measurementId: "G-611QY6BNJB"
+
+apiKey: "AIzaSyBzBRXDzCmNkEPxAmsPGMBgbKVipSOIkaE",
+
+authDomain: "the-bocha.firebaseapp.com",
+
+projectId: "the-bocha",
+
+storageBucket: "the-bocha.firebasestorage.app",
+
+messagingSenderId: "284110596241",
+
+appId: "1:284110596241:web:f39e4c03f3c3eabb1cb730",
+
+measurementId: "G-611QY6BNJB"
+
 };
 
 const app = initializeApp(firebaseConfig);
+
 const db = getFirestore(app);
 
-const horarios = ["09:30","10:30","11:30","12:30","15:30","16:30","17:30","18:30","19:30","20:30","21:30","22:30"];
-const prices = { Corte:10000, Barba:2000, Combo:12000 };
+const horarios = [
 
-const slots = document.getElementById("slots");
-const dayEl = document.getElementById("day");
+"09:30",
+"10:30",
+"11:30",
+"12:30",
+"13:30",
+"15:30",
+"16:30",
+"17:30",
+"18:30",
+"19:30",
+"20:30",
+"21:30",
+"22:30",
+"23:30"
+
+];
+
+const slots =
+document.getElementById("slots");
+
+const dayEl =
+document.getElementById("day");
+
 let selected = null;
+
 let turnosCache = [];
 
 async function cargar(){
-  selected = null;
-  const dia = dayEl.value;
-  const snap = await getDocs(collection(db,"turnos"));
-  turnosCache = snap.docs.map(d=>d.data());
 
-  const ocupados = turnosCache.filter(t=>t.day===dia).map(t=>t.time);
-  slots.innerHTML = "";
+selected = null;
 
-  horarios.forEach(h=>{
-    const div = document.createElement("div");
-    div.className = "slot";
-    div.textContent = ocupados.includes(h) ? h + " ❌" : h;
+const dia = dayEl.value;
 
-    if(ocupados.includes(h)){
-      div.classList.add("busy");
-    } else {
-      div.onclick = ()=>{
-        document.querySelectorAll(".slot").forEach(x=>x.classList.remove("active"));
-        div.classList.add("active");
-        selected = h;
-      };
-    }
-    slots.appendChild(div);
-  });
+const snapshot = await getDocs(
+collection(db,"turnos")
+);
 
-  actualizarAdmin();
+turnosCache = snapshot.docs
+.map(doc=>doc.data());
+
+const ocupados = turnosCache
+.filter(t=>t.day===dia)
+.map(t=>t.time);
+
+slots.innerHTML = "";
+
+horarios.forEach(h=>{
+
+const div =
+document.createElement("div");
+
+div.className = "slot";
+
+div.textContent = h;
+
+if(ocupados.includes(h)){
+
+div.classList.add("busy");
+
+div.textContent = h + " ❌";
+
+}else{
+
+div.onclick = ()=>{
+
+document
+.querySelectorAll(".slot")
+.forEach(x=>x.classList.remove("active"));
+
+div.classList.add("active");
+
+selected = h;
+
+};
+
 }
+
+slots.appendChild(div);
+
+});
+
+/* ADMIN */
+
+document.getElementById(
+"adminTurnos"
+).textContent =
+turnosCache.length;
+
+document.getElementById(
+"adminMoney"
+).textContent =
+"$" + (turnosCache.length * 10000);
+
+document.getElementById(
+"adminClientes"
+).textContent =
+turnosCache.length;
+
+const lista =
+document.getElementById(
+"listaTurnos"
+);
+
+lista.innerHTML = "";
+
+turnosCache.forEach(t=>{
+
+const item =
+document.createElement("p");
+
+item.style.marginBottom =
+"10px";
+
+item.innerHTML =
+"💈 <b>" +
+t.name +
+"</b> — " +
+t.service +
+" — " +
+t.day +
+" " +
+t.time;
+
+lista.appendChild(item);
+
+});
+
+}
+
+cargar();
 
 dayEl.onchange = cargar;
 
-document.getElementById("btn").onclick = async ()=>{
-  const name = document.getElementById("name").value.trim();
-  const service = document.getElementById("service").value;
-  const day = dayEl.value;
+/* RESERVAR */
 
-  if(!name) return alert("Poné tu nombre");
-  if(!selected) return alert("Elegí un horario");
+document.getElementById(
+"btn"
+).onclick = async ()=>{
 
-  await addDoc(collection(db,"turnos"),{
-    name, service, day, time:selected, price:prices[service], createdAt:Date.now()
-  });
+const name =
+document.getElementById(
+"name"
+).value.trim();
 
-  const msg = "Hola The Bocha 💈, soy " + name + ". Reservé " + service + " para " + day + " a las " + selected + ".";
-  window.open("https://wa.me/5493835692337?text=" + encodeURIComponent(msg), "_blank");
+const service =
+document.getElementById(
+"service"
+).value;
 
-  alert("Turno reservado 🔥");
-  await cargar();
-};
+const day =
+document.getElementById(
+"day"
+).value;
 
-function actualizarAdmin(){
-  const total = turnosCache.length;
-  const money = turnosCache.reduce((sum,t)=>sum + (t.price || 10000),0);
+if(!name){
 
-  document.getElementById("adminTurnos").textContent = total + " turnos";
-  document.getElementById("adminMoney").textContent = "$" + money.toLocaleString("es-AR");
-  document.getElementById("adminClientes").textContent = total + " reservas";
+alert("Poné tu nombre");
 
-  const lista = document.getElementById("listaTurnos");
-  lista.innerHTML = "";
+return;
 
-  turnosCache
-    .sort((a,b)=>(a.day+a.time).localeCompare(b.day+b.time))
-    .forEach(t=>{
-      const item = document.createElement("p");
-      item.style.marginBottom = "10px";
-      item.innerHTML = "💈 <b>" + (t.name || "Cliente") + "</b> — " + t.service + " — " + t.day + " " + t.time;
-      lista.appendChild(item);
-    });
 }
 
-document.getElementById("adminLogin").onclick = ()=>{
-  const pass = document.getElementById("adminPass").value;
-  if(pass === "bocha123"){
-    document.getElementById("adminPanel").style.display = "block";
-    document.querySelector(".admin-lock").style.display = "none";
-  } else {
-    alert("Clave incorrecta");
-  }
+if(!selected){
+
+alert("Elegí un horario");
+
+return;
+
+}
+
+await addDoc(
+collection(db,"turnos"),
+{
+name,
+service,
+day,
+time:selected,
+createdAt:Date.now()
+}
+);
+
+await cargar();
+
+const msg =
+"Hola The Bocha 💈, soy " +
+name +
+". Reservé " +
+service +
+" para " +
+day +
+" a las " +
+selected;
+
+window.open(
+"https://wa.me/5493835692337?text=" +
+encodeURIComponent(msg),
+"_blank"
+);
+
+alert("Turno reservado 🔥");
+
 };
 
-cargar();
+/* ADMIN LOGIN */
+
+document.getElementById(
+"adminLogin"
+).onclick = ()=>{
+
+const pass =
+document.getElementById(
+"adminPass"
+).value;
+
+if(pass === "bocha123"){
+
+document.getElementById(
+"adminPanel"
+).style.display =
+"block";
+
+}else{
+
+alert("Clave incorrecta");
+
+}
+
+};
+
 </script>
 
 </body>
