@@ -640,11 +640,18 @@ ENTRAR
 </button>
 
 </div>
+<!-- SOLO PEGÁ ESTE BLOQUE DENTRO DEL PANEL ADMIN
+REEMPLAZÁ DESDE:
+<div class="adminPanel" id="adminPanel">
+HASTA SU </div> FINAL
+-->
 
 <div
 class="adminPanel"
 id="adminPanel"
 >
+
+<!-- STATS -->
 
 <div
 style="
@@ -689,6 +696,94 @@ $0
 
 <br>
 
+<!-- EDITAR INFO -->
+
+<div class="price">
+
+<h3>
+⚙️ Personalizar Web
+</h3>
+
+<input
+id="logoInput"
+class="input"
+placeholder="Nombre logo (ej: logo.png)"
+value="logo.png"
+>
+
+<input
+id="instagramInput"
+class="input"
+placeholder="Instagram"
+value="https://instagram.com/The.bocha"
+>
+
+<input
+id="foto1Input"
+class="input"
+placeholder="foto1.jpg"
+value="foto1.jpg"
+>
+
+<input
+id="foto2Input"
+class="input"
+placeholder="foto2.jpg"
+value="foto2.jpg"
+>
+
+<input
+id="foto3Input"
+class="input"
+placeholder="foto3.jpg"
+value="foto3.jpg"
+>
+
+<input
+id="foto4Input"
+class="input"
+placeholder="foto4.jpg"
+value="foto4.jpg"
+>
+
+<input
+id="foto5Input"
+class="input"
+placeholder="foto5.jpg"
+value="foto5.jpg"
+>
+
+<button id="guardarPersonalizacion">
+GUARDAR CAMBIOS 🔥
+</button>
+
+</div>
+
+<br>
+
+<!-- INSTAGRAM -->
+
+<div class="price">
+
+<h3>
+📸 Instagram
+</h3>
+
+<a
+id="instaAdminBtn"
+href="https://instagram.com/The.bocha"
+target="_blank"
+class="btn"
+>
+IR A INSTAGRAM
+</a>
+
+</div>
+
+<br>
+
+<!-- RESERVAS -->
+
 <div class="price">
 
 <h3>
@@ -700,6 +795,7 @@ $0
 </div>
 
 </div>
+
 
 </section>
 
@@ -1037,7 +1133,57 @@ alert(
 }
 
 };
+/* PERSONALIZAR WEB */
 
+document.getElementById(
+"guardarPersonalizacion"
+).onclick = ()=>{
+
+const logo =
+document.getElementById(
+"logoInput"
+).value;
+
+document.querySelector(
+".logo"
+).src = logo;
+
+const insta =
+document.getElementById(
+"instagramInput"
+).value;
+
+document.querySelectorAll(
+"a[href*='instagram']"
+).forEach(x=>{
+x.href = insta;
+});
+
+document.getElementById(
+"instaAdminBtn"
+).href = insta;
+
+const fotos = [
+
+document.getElementById("foto1Input").value,
+document.getElementById("foto2Input").value,
+document.getElementById("foto3Input").value,
+document.getElementById("foto4Input").value,
+document.getElementById("foto5Input").value
+
+];
+
+document.querySelectorAll(
+".gallery img"
+).forEach((img,i)=>{
+img.src = fotos[i];
+});
+
+alert(
+"Web actualizada 🔥"
+);
+
+};
 </script>
 
 </body>
