@@ -1,11 +1,4 @@
-<!-- SUBÍ ESTOS ARCHIVOS A GITHUB:
-logo.png
-foto1.jpg
-foto2.jpg
-foto3.jpg
-foto4.jpg
-foto5.jpg
--->
+<!-- REEMPLAZÁ TODO TU index.html POR ESTE BLOQUE -->
 
 <!DOCTYPE html>
 <html lang="es">
@@ -428,8 +421,6 @@ font-size:22px;
 
 <div class="smoke"></div>
 
-<!-- SIDEBAR -->
-
 <div class="sidebar">
 
 <a class="side" href="#">
@@ -528,10 +519,6 @@ LLEVADO CON PRESENCIA.
 📅 RESERVÁ TU TURNO
 </h2>
 
-<p style="color:#bbb;margin-bottom:15px">
-Elegí día y horario que mejor te convenga.
-</p>
-
 <input
 id="name"
 class="input"
@@ -579,10 +566,6 @@ style="background:#111;color:#d4af37;border:1px solid #b8891d"
 📞 CANCELAR TURNO / LLAMAR
 </a>
 
-<p style="margin-top:12px;color:#bbb">
-Para cancelar un turno llamá directamente.
-</p>
-
 </div>
 
 <div>
@@ -610,100 +593,6 @@ Para cancelar un turno llamá directamente.
 <img src="foto3.jpg">
 <img src="foto4.jpg">
 <img src="foto5.jpg">
-
-</div>
-
-<br>
-
-<a
-class="btn"
-href="https://instagram.com/The.bocha"
->
-VER MÁS ESTILOS →
-</a>
-
-</section>
-
-<!-- INFO -->
-
-<section class="panel">
-
-<div class="infoGrid">
-
-<div class="info">
-
-<h3>📍 UBICACIÓN</h3>
-
-<p>
-Barrio Virgen del Carmen
-<br>
-Saujil, Pomán
-</p>
-
-<br>
-
-<a
-class="btn"
-href="https://maps.google.com"
->
-VER EN MAPA
-</a>
-
-</div>
-
-<div class="info">
-
-<h3>⏰ HORARIOS</h3>
-
-<p>
-Lunes a Sábado
-<br><br>
-
-<span class="gold">
-09:30 a 13:30
-</span>
-
-<br>
-
-<span class="gold">
-15:30 a 23:30
-</span>
-
-</p>
-
-</div>
-
-<div class="info">
-
-<h3>💰 PRECIOS</h3>
-
-<p>
-Corte $10.000
-<br><br>
-
-Barba $2.000
-<br><br>
-
-Combo $12.000
-</p>
-
-</div>
-
-<div class="info">
-
-<h3>🎁 PROMOS</h3>
-
-<p>
-Cliente fiel
-<br><br>
-
-6 cortes
-<br><br>
-
-1 corte gratis
-</p>
-
-</div>
 
 </div>
 
@@ -742,8 +631,6 @@ ENTRAR
 class="adminPanel"
 id="adminPanel"
 >
-
-<!-- STATS -->
 
 <div
 style="
@@ -788,29 +675,6 @@ $0
 
 <br>
 
-<!-- MENSAJE EDITABLE -->
-
-<div class="price">
-
-<h3>📝 Mensaje editable</h3>
-
-<textarea
-id="mensajeAdmin"
-rows="4"
->
-Bienvenido a Studio The Bocha 🔥
-</textarea>
-
-<button id="guardarMensaje">
-GUARDAR MENSAJE
-</button>
-
-</div>
-
-<br>
-
-<!-- RESERVAS -->
-
 <div class="price">
 
 <h3>
@@ -830,12 +694,10 @@ The Bocha
 </div>
 
 <div class="footer">
-© Studio The Bocha • Todos los derechos reservados
+© Studio The Bocha
 </div>
 
 </div>
-
-<!-- FIREBASE -->
 
 <script type="module">
 
@@ -846,7 +708,9 @@ import {
 getFirestore,
 collection,
 addDoc,
-getDocs
+getDocs,
+deleteDoc,
+doc
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
@@ -871,8 +735,6 @@ measurementId: "G-611QY6BNJB"
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
-
-/* HORARIOS */
 
 const horarios = [
 
@@ -911,8 +773,6 @@ let selected = null;
 
 let turnosCache = [];
 
-/* CARGAR */
-
 async function cargar(){
 
 selected = null;
@@ -924,7 +784,10 @@ collection(db,"turnos")
 );
 
 turnosCache =
-snap.docs.map(d=>d.data());
+snap.docs.map(d=>({
+id:d.id,
+...d.data()
+}));
 
 const ocupados =
 turnosCache
@@ -972,6 +835,29 @@ slots.appendChild(div);
 });
 
 actualizarAdmin();
+
+document.querySelectorAll(".liberarBtn").forEach(btn=>{
+
+btn.onclick = async ()=>{
+
+const id =
+btn.getAttribute("data-id");
+
+if(confirm("¿Liberar turno?")){
+
+await deleteDoc(
+doc(db,"turnos",id)
+);
+
+alert("Turno liberado ✅");
+
+await cargar();
+
+}
+
+};
+
+});
 
 }
 
@@ -1028,8 +914,7 @@ service +
 " para " +
 day +
 " a las " +
-selected +
-". Si necesito cancelar voy a llamar.";
+selected;
 
 window.open(
 "https://wa.me/5493835692337?text=" +
@@ -1101,7 +986,9 @@ t.day +
 " " +
 t.time +
 "<br><br>" +
-"<a href='tel:+5493835692337' style='color:#d4af37'>📞 Llamar</a>";
+"<button class='liberarBtn' data-id='" +
+t.id +
+"' style='width:auto;padding:10px 14px'>Liberar turno</button>";
 
 lista.appendChild(p);
 
@@ -1134,18 +1021,6 @@ alert(
 );
 
 }
-
-};
-
-/* MENSAJE */
-
-document.getElementById(
-"guardarMensaje"
-).onclick = ()=>{
-
-alert(
-"Mensaje guardado 🔥"
-);
 
 };
 
